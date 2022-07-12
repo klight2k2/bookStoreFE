@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  box-sizing: inherit;
+}
+
+html{
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+$sizes:(0,2,4,8,10,12,16,20);
+
+@each $size in $sizes{
+  .mt-#{$size}{
+    margin-top: #{$size}px !important;
+  }
+  .mr-#{$size} {
+    margin-right: #{$size}px !important;
+  }
+  .mb-#{$size} {
+    margin-bottom: #{$size}px !important;
+    }
+  .ml-#{$size} {
+    margin-left: #{$size}px !important;
+  }
+  .pt-#{$size} {
+    padding-top: #{$size}px !important;
+  }
+  .pr-#{$size} {
+    padding-right: #{$size}px !important;
+  }
+  .pl-#{$size} {
+    padding-left: #{$size}px !important;
+  }
+  .pb-#{$size} {
+    padding-bottom: #{$size}px !important;
+  }
+}
+

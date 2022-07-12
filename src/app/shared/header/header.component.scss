@@ -1,0 +1,116 @@
+.headerContainer {
+  background-color: #ff4157;
+  height: 53px;
+}
+
+// .container {
+//   height: 100%;
+// }
+
+.full-height {
+  height: 100%;
+}
+
+::ng-deep .ant-menu {
+  background-color: #ff4157;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+
+  &-item:after:hover {
+    border-color: 2px solid #fff;
+  }
+
+  &-item-selected::after {
+    border-bottom: 2px solid #fff;
+    color: #fff;
+  }
+}
+
+::ng-deep .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item:hover {
+  color: #fff;
+
+  &::after {
+
+    border-bottom: 2px solid #fff;
+  }
+
+}
+
+::ng-deep .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-selected {
+  &::after {
+
+    border-bottom: 2px solid #fff;
+  }
+
+  color: #fff;
+}
+
+::ng-deep .ant-dropdown-menu-item:hover {
+  color: red;
+}
+
+
+.shopping-cart{
+  display: flex;
+  align-items: center;
+}
+
+.card-logo{
+  margin-right: 5px;
+}
+
+.shopping-heading{
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.shopping-count{
+  padding: 0;
+  margin: 0;
+}
+
+.login{
+  display: flex;
+  justify-content: center;
+  color:#fff;
+  &-btn{
+    font-size: 1.6rem;
+    transition: ease-in 0.2;
+    margin: 0;
+    position: relative;
+
+    &:hover{
+      box-shadow: 5px 5px 15px 5px rgba(0,0,0,0);
+      text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+
+    }
+
+  }
+}
+
+.login-btn:hover:after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 2px;
+  width: 100%;
+  border-bottom: 2px solid #fff;
+}
+
+.logined{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-avt{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.user-name{
+  font-size: 1.6rem;
+  color:#fff;
+}
