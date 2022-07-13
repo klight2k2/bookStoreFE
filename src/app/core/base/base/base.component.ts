@@ -3,8 +3,13 @@ import { BehaviorSubject, Observable,take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-base',
-  templateUrl: './base.component.html',
-  styleUrls: ['./base.component.scss']
+  template: `
+    <p>
+      base works!
+    </p>
+  `,
+  styles: [
+  ]
 })
 export class BaseComponent implements OnInit,OnDestroy {
   private $destroy=new BehaviorSubject('');
@@ -45,4 +50,3 @@ export class BaseComponent implements OnInit,OnDestroy {
 
   }
 }
-

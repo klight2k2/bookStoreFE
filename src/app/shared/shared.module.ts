@@ -8,13 +8,20 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FooterComponent } from './footer/footer.component';
-const nzZorro=[
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+
+const nzZorroModule=[
   NzButtonModule,
   NzMenuModule,
   NzGridModule,
   NzDropDownModule,
   NzInputModule,
   NzIconModule,
+  NzTableModule,
+  NzBadgeModule,
+  NzPopoverModule,
 ]
 
 @NgModule({
@@ -24,11 +31,12 @@ const nzZorro=[
   ],
   imports: [
     CommonModule,
-    ...nzZorro
+    ...nzZorroModule
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ...nzZorroModule,
   ]
 })
 export class SharedModule { }

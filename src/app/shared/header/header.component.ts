@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public isLogined:boolean = false;
+  public isLogined:boolean = true;
+  public countCart=5;
   constructor() { }
   public categories=["Art & Music","Biographies","Business",
   "Comic","Computers & Tech","Cooking","Edu & Refference","Entertainment"]

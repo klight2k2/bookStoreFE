@@ -8,13 +8,13 @@
       <span></span>
     </div>
     <div nz-col [nzSpan]="3" [nzOffset]="9" class="shopping-cart">
-      <div>
+      <nz-badge [nzCount]="countCart">
         <img src="assets/icon/card.webp" alt="" class="card-logo" />
-      </div>
-      <div class="shopping-desc">
+      </nz-badge>
+      <!-- <div class="shopping-desc">
         <h2 class="shopping-heading">Shopping-card</h2>
         <p class="shopping-count">item - 0</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -63,8 +63,17 @@
       </div>
       <div nz-col [nzSpan]="4">
         <div *ngIf="isLogined; else login" class="ml-16 logined">
-          <img src="assets/avt/1.jpg" alt="" class="user-avt" />
-          <h2 class="user-name">Minh Nguyệt</h2>
+          <button
+            nz-popover
+            nzType="primary"
+            nzPopoverTitle="Title"
+            nzPopoverContent="Content"
+            nzPopoverPlacement="bottom"
+          >
+            hello
+          </button>
+
+          `
         </div>
       </div>
     </div>

@@ -1,0 +1,46 @@
+<div class="container">
+  <h2 class="shopping-title">Giỏ hàng</h2>
+
+  <nz-table #basicTable [nzData]="dataSet">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Sản phẩm</th>
+        <th></th>
+
+        <th>Đơn giá</th>
+        <th>Số lượng</th>
+        <th>Số tiền</th>
+        <th>Xóa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ data.name }}</td>
+        <td><img src="assets/store/1.jpeg" alt="" class="cart-image" /></td>
+
+        <td>{{ data.const }}</td>
+        <td>
+          <input
+            type="number"
+            nz-input
+            style="width: 50px"
+            (change)="changeCountBook($event, i)"
+            value="{{ data.count }}"
+          />
+        </td>
+        <td>{{ data.free }}</td>
+        <td>
+          <button nz-button nzDanger>
+            <i nz-icon nzType="delete" nzTheme="fill"></i>
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <div class="d-flex align-center justify-flex-end mb-16 mr-16">
+    <button nz-button class="">Đặt hàng</button>
+  </div>
+</div>
