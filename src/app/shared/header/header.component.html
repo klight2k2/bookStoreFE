@@ -1,6 +1,6 @@
 <div class="container">
   <div nz-row>
-    <div nz-col [nzSpan]="2">
+    <div nz-col [nzSpan]="2" class="d-flex align-center">
       <img src="assets/icon/call.webp" alt="" />
     </div>
     <div nz-col [nzSpan]="4" [nzOffset]="6">
@@ -62,18 +62,17 @@
         </div>
       </div>
       <div nz-col [nzSpan]="4">
-        <div *ngIf="isLogined; else login" class="ml-16 logined">
-          <button
-            nz-popover
-            nzType="primary"
-            nzPopoverTitle="Title"
-            nzPopoverContent="Content"
-            nzPopoverPlacement="bottom"
-          >
-            hello
-          </button>
-
-          `
+        <div
+          *ngIf="isLogined; else login"
+          class="ml-16 logined"
+          nz-popover
+          nzType="primary"
+          nzPopoverTitle="Thông tin tài khoản"
+          [nzPopoverContent]="loginedInfo"
+          nzPopoverPlacement="bottom"
+        >
+          <img src="assets/avt/1.jpg" alt="" class="user-avt" />
+          <h2 class="user-name">Minh Quang</h2>
         </div>
       </div>
     </div>
@@ -91,4 +90,9 @@
     <p class="login-btn mr-20">Đăng kí</p>
     <p class="login-btn">Đăng nhập</p>
   </div>
+</ng-template>
+
+<ng-template #loginedInfo>
+  <p>Đơn mua</p>
+  <p>Đăng xuất</p>
 </ng-template>
