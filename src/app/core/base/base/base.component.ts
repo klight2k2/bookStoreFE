@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable,take, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable,Subject,take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-base',
@@ -12,7 +12,7 @@ import { BehaviorSubject, Observable,take, takeUntil } from 'rxjs';
   ]
 })
 export  class BaseComponent implements OnInit,OnDestroy {
-  private $destroy=new BehaviorSubject('');
+  private $destroy=new Subject<string>();
   constructor() { }
 
   ngOnInit(): void {
@@ -34,19 +34,23 @@ export  class BaseComponent implements OnInit,OnDestroy {
   public postInit():void{}
 
   protected preDestroy():void{
-    this.$destroy.next('destroy');
+    this.$destroy.next('');
   }
 
   protected destroy():void{}
 
   protected postDestroy():void{}
 
-  protected subcribeOnce<T>(observable:Observable<T>,callback:void):void{
-    observable.pipe(take(1)).subscribe(()=>callback);
+  protected subcribeOnce<T>(observable:Observable<T>,callback:Function):void{
+    observable.pipe(take(1)).subscribe((data:any)=>callback(data));
   }
 
-  protected subscribeUntilDestroy<T>(observable:Observable<T>,callback:void):void{
-    observable.pipe(takeUntil(this.$destroy)).subscribe(()=>callback);
+  protected subscribeUntilDestroy<T>(observable:Observable<T>,callback:Function):void{
+
+    observable.pipe(takeUntil(this.$destroy)).subscribe((data:any)=>{
+
+      callback(data)
+    });
 
   }
 }

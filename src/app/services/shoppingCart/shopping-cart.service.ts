@@ -23,6 +23,8 @@ export class ShoppingCartService {
   }
 
   public getCart(){
+
     this.shoppingCartData.next(this.localStorageService.get('shopping_cart'));
+
   }
 }
