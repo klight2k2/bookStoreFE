@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
-
+import { NzCardModule } from 'ng-zorro-antd/card';
 const nzZorroModule=[
   NzButtonModule,
   NzMenuModule,
@@ -22,6 +22,7 @@ const nzZorroModule=[
   NzTableModule,
   NzBadgeModule,
   NzPopoverModule,
+  NzCardModule,
 ]
 
 @NgModule({

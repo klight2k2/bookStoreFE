@@ -11,7 +11,7 @@ import { BehaviorSubject, Observable,take, takeUntil } from 'rxjs';
   styles: [
   ]
 })
-export class BaseComponent implements OnInit,OnDestroy {
+export  class BaseComponent implements OnInit,OnDestroy {
   private $destroy=new BehaviorSubject('');
   constructor() { }
 
@@ -27,11 +27,11 @@ export class BaseComponent implements OnInit,OnDestroy {
     this.postDestroy();
   }
 
-  protected preInit():void{}
+  public preInit():void{}
 
-  protected init():void{}
+  public init():void{}
 
-  protected postInit():void{}
+  public postInit():void{}
 
   protected preDestroy():void{
     this.$destroy.next('destroy');

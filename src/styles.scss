@@ -33,7 +33,7 @@ $positions:(start,end,between,baseline,center,flex-end);
 
 
 
-$sizes:(0,2,4,8,10,12,16,20);
+$sizes:(0,2,4,8,10,12,16,20,24,32);
 
 @each $size in $sizes{
   .mt-#{$size}{
