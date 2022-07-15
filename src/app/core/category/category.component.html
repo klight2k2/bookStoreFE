@@ -1,0 +1,17 @@
+<h2>Category</h2>
+
+<ng-container *ngFor="let category of categories">
+  <p>{{ category }}</p>
+</ng-container>
+<div>
+  <h2>Price</h2>
+  <div *ngFor="let name of checkboxData">
+    <input
+      type="checkbox"
+      [name]="name"
+      (change)="onChange($event)"
+      [disabled]="isChecked && isCheckedName != name"
+    />
+    {{ "Checkbox " + name }}
+  </div>
+</div>
