@@ -4,6 +4,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { SharedModule } from '../shared/shared.module';
 import { ListCartComponent } from './list-cart/list-cart.component';
 import { CartComponent } from './cart/cart.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { CategoryComponent } from './category/category.component';
 
 
 
@@ -11,11 +13,14 @@ import { CartComponent } from './cart/cart.component';
   declarations: [
     ShoppingCartComponent,
     ListCartComponent,
-    CartComponent
+    CartComponent,
+    MainLayoutComponent,
+    CategoryComponent
   ],
   exports:[
     ShoppingCartComponent,
-    ListCartComponent
+    ListCartComponent,
+    MainLayoutComponent
   ],
   imports: [
     CommonModule,

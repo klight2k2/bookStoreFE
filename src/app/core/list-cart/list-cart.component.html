@@ -1,10 +1,12 @@
-<div class="container mt-32" nz-row>
-  <ng-container *ngFor="let data of dataSet">
-    <app-cart
-      nz-col
-      class="mb-32 gutter-row"
-      nzSpan="6"
-      [data]="data"
-    ></app-cart>
-  </ng-container>
+<div class="ca">
+  <div class="mt-32" nz-row>
+    <ng-container *ngFor="let data of dataSet">
+      <app-cart
+        nz-col
+        class="mb-32 gutter-row"
+        nzSpan="6"
+        [data]="data"
+      ></app-cart>
+    </ng-container>
+  </div>
 </div>
