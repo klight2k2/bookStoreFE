@@ -9,7 +9,13 @@
     </div>
     <div nz-col [nzSpan]="3" [nzOffset]="9" class="shopping-cart">
       <nz-badge [nzCount]="countCart">
-        <img src="assets/icon/card.webp" alt="" class="card-logo" />
+        <a
+          routerLink="./shopping-cart"
+          routerLinkActive="active"
+          (click)="navigateShoppingCart()"
+        >
+          <img src="assets/icon/card.webp" alt="" class="card-logo" />
+        </a>
       </nz-badge>
       <!-- <div class="shopping-desc">
         <h2 class="shopping-heading">Shopping-card</h2>
@@ -18,7 +24,6 @@
     </div>
   </div>
 </div>
-
 <div class="headerContainer">
   <div class="container">
     <div nz-row nzAlign="middle" class="full-height">
