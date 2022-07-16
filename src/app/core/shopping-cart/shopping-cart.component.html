@@ -18,7 +18,7 @@
       <tr *ngFor="let data of basicTable.data; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ data.title }}</td>
-        <td><img src="assets/store/1.jpeg" alt="" class="cart-image" /></td>
+        <td><img [src]="data.files" alt="" class="cart-image" /></td>
 
         <td>{{ data.const }}</td>
         <td>
@@ -32,7 +32,7 @@
         </td>
         <td>{{ data.free }}</td>
         <td>
-          <button nz-button nzDanger>
+          <button nz-button nzDanger (click)="deleteBook(i)">
             <i nz-icon nzType="delete" nzTheme="fill"></i>
             Delete
           </button>

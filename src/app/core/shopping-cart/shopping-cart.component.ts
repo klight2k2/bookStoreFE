@@ -14,7 +14,6 @@ export class ShoppingCartComponent extends BaseComponent implements OnInit {
     super()
    }
   public override postInit ():void{
-    console.log("hello")
     this.shoppingCart.getCart()
     this.subscribeUntilDestroy<any>(this.shoppingCart.shoppingCartData,(data:any)=>{
       this.dataSet=data;
@@ -22,9 +21,17 @@ export class ShoppingCartComponent extends BaseComponent implements OnInit {
     })
    }
 
-  public a=0;
     public changeCountBook(event:any,index:any){
       this.dataSet[index].count=event.target.value;
-
+      console.log(  this.dataSet[index].count )
+     this.shoppingCart.shoppingCartData.next(this.dataSet)
+     this.shoppingCart.updateCart();
     }
+
+    public deleteBook(index:number){
+      this.shoppingCart.shoppingCartData.next(this.dataSet.filter((item:any,id:number)=>id!==index))
+     this.shoppingCart.updateCart();
+    }
+
+
 }

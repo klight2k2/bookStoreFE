@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from '../base/base/base.component';
+import { BaseComponent } from '../../base/base/base.component';
 
 @Component({
   selector: 'app-list-cart',
@@ -29,7 +29,5 @@ export class ListCartComponent extends BaseComponent implements OnInit {
     super()
    }
 
- public override postInit(): void {
 
- }
 }

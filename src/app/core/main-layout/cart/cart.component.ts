@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
   }
 
   handleAddCart(cart:any){
-    this.shoppingCartService.addCart(cart);
+  const {title,description,files}=cart;
+    this.shoppingCartService.addCart({title:title,description:description,files:this.getLink(files),count:1});
   }
 }

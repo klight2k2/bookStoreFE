@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { BaseComponent } from './core/base/base/base.component';
+import { ShoppingCartModule } from './core/shopping-cart/shopping-cart.module';
 
 registerLocaleData(en);
 
@@ -29,6 +30,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
+    ShoppingCartModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

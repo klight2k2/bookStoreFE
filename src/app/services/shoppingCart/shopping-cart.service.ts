@@ -27,4 +27,9 @@ export class ShoppingCartService {
     this.shoppingCartData.next(this.localStorageService.get('shopping_cart'));
 
   }
+
+  public updateCart(){
+    this.localStorageService.set('shopping_cart',this.shoppingCartData.getValue());
+
+  }
 }
