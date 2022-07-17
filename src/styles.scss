@@ -3,6 +3,12 @@
   box-sizing: inherit;
 }
 
+$primary-color:#ff4157;
+
+
+:root {
+  --primary-color:#ff4157;
+}
 html{
   font-size: 62.5%;
   line-height: 1.6rem;
@@ -23,6 +29,15 @@ li,ul,p{
 
 
 }
+
+
+
+
+
+::ng-deep .ant-btn-primary{
+  background: red !important;
+    color:#fff !important;
+  }
 
 $positions:(start,end,between,baseline,center,flex-end);
 

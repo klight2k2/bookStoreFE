@@ -12,6 +12,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 const nzZorroModule=[
   NzButtonModule,
   NzMenuModule,
@@ -23,6 +24,7 @@ const nzZorroModule=[
   NzBadgeModule,
   NzPopoverModule,
   NzCardModule,
+  NzCarouselModule,
 ]
 
 @NgModule({
