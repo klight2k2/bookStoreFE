@@ -15,7 +15,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { CartComponent } from './cart/cart.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
-const nzZorroModule=[
+const nzZorroModule = [
   NzButtonModule,
   NzMenuModule,
   NzGridModule,
@@ -27,24 +27,22 @@ const nzZorroModule=[
   NzPopoverModule,
   NzCardModule,
   NzCarouselModule,
-]
+];
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     CartComponent,
-    CartDetailComponent
+    CartDetailComponent,
   ],
-  imports: [
-    CommonModule,
-    ...nzZorroModule
-  ],
-  exports:[
+  imports: [CommonModule, ...nzZorroModule],
+  exports: [
     HeaderComponent,
     FooterComponent,
     CartComponent,
+    CartDetailComponent,
     ...nzZorroModule,
-  ]
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
