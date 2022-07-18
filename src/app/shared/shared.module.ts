@@ -13,6 +13,8 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { CartComponent } from './cart/cart.component';
+import { CartDetailComponent } from './cart-detail/cart-detail.component';
 const nzZorroModule=[
   NzButtonModule,
   NzMenuModule,
@@ -30,7 +32,9 @@ const nzZorroModule=[
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent,
+    CartDetailComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,7 @@ const nzZorroModule=[
   exports:[
     HeaderComponent,
     FooterComponent,
+    CartComponent,
     ...nzZorroModule,
   ]
 })

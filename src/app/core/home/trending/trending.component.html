@@ -1,2 +1,11 @@
 <h2 class="trending-title mt-32">TRENDING BOOKS</h2>
 <div class="line"><span></span></div>
+<div class="container" nz-row>
+  <app-cart
+    nz-col
+    class="mb-32 gutter-row"
+    nzSpan="6"
+    [data]="data"
+    *ngFor="let data of dataSet"
+  ></app-cart>
+</div>
