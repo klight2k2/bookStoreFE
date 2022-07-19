@@ -1,0 +1,52 @@
+<div class="container mt-32 mb-32">
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <img
+        src="assets/full/1b555cdf7cca05ab73baf07a70d6e56fc7aae14d.jpg"
+        alt=""
+      />
+    </div>
+    <div nz-col nzSpan="16">
+      <h2 class="cart-detail-title">
+        {{ dataSet.title }}
+      </h2>
+      <h4>Tác giả: {{ dataSet.author }}</h4>
+      <p class="cart-detail-price">
+        {{ dataSet.price | currency: "VND":true }}
+      </p>
+      <p class="mt-16">Đã bán:1000</p>
+      <div class="cart-detail-count mt-16">
+        Số lượng:
+        <button nz-button (click)="decreaseNum()">
+          <i nz-icon nzType="minus" nzTheme="outline"></i>
+        </button>
+        <input
+          type="text"
+          nz-input
+          class="cart-detail-input"
+          nzSize="large"
+          [(ngModel)]="num"
+        />
+        <button nz-button (click)="increaseNum()">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>
+        </button>
+      </div>
+      <button class="cart-detail-btn" nz-button>Chọn mua</button>
+    </div>
+  </div>
+  <div>
+    <nz-tabset class="mt-32">
+      <nz-tab nzTitle="Thông tin chi tiết">
+        <div nz-row>
+          <div nz-col nzSpan="6" class="cart-infor">Nhà xuất bản</div>
+          <div nz-col nzSpan="18">{{ dataSet.publisher }}</div>
+          <div nz-col nzSpan="6" class="cart-infor">Số trang</div>
+          <div nz-col nzSpan="18">{{ dataSet.pages }}</div>
+          <div nz-col nzSpan="6" class="cart-infor">Tác giả</div>
+          <div nz-col nzSpan="18">{{ dataSet.author }}</div>
+        </div>
+      </nz-tab>
+      <nz-tab nzTitle="Mô tả sản phẩm"> {{ dataSet.description }}</nz-tab>
+    </nz-tabset>
+  </div>
+</div>
