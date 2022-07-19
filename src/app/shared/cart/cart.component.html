@@ -3,6 +3,7 @@
   [nzCover]="coverTemplate"
   [nzActions]="[actionSetting]"
   [nzHoverable]="true"
+  (click)="navigateToDetail()"
 >
   <nz-card-meta [nzTitle]="data.title"> </nz-card-meta>
   <h3>Giá :{{ data.price | currency: "VND":true }}</h3>

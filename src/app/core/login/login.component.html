@@ -1,0 +1,56 @@
+<div class="login">
+  <form
+    [formGroup]="loginForm"
+    class="login-form"
+    *ngIf="isLogin; else register"
+    (ngSubmit)="login()"
+  >
+    <div class="d-flex algin-center justify-center">
+      <img src="assets/icon/logo.webp" alt="" />
+    </div>
+    <label for="user">Tài khoản</label>
+    <input type="text" id="user" nz-input formControlName="username" />
+    <div
+      *ngIf="
+        loginForm.controls['username'].hasError('required') &&
+        loginForm.controls['username'].touched
+      "
+    >
+      Is required
+    </div>
+    <label for="password">Mật khẩu</label>
+    <input type="password" id="password" nz-input formControlName="password" />
+    <div
+      *ngIf="
+        loginForm.controls['password'].hasError('required') &&
+        loginForm.controls['password'].touched
+      "
+    >
+      Is required
+    </div>
+    <button nz-button class="mt-16" nzBlock>Đăng nhập</button>
+    <div class="login-desc mt-16">
+      <span>Bạn chưa có tài khoản? </span>
+      <a (click)="toggleLogin()">Đăng kí</a>
+    </div>
+  </form>
+  <ng-template #register>
+    <form class="login-form">
+      <div class="d-flex algin-center justify-center">
+        <img src="assets/icon/logo.webp" alt="" />
+      </div>
+      <label for="user">Tài khoản</label>
+
+      <input type="text" id="user" nz-input />
+      <label for="password">Mật khẩu</label>
+      <input type="password" id="password" nz-input />
+      <label for="rePassword">Nhập lại mật khẩu</label>
+      <input type="rePassword" id="rePassword" nz-input />
+      <button nz-button type="submit" class="mt-16" nzBlock>Đăng kí</button>
+      <div class="login-desc mt-16">
+        <span>Bạn đã có tài khoản? </span>
+        <a (click)="toggleLogin()"> Đăng nhập</a>
+      </div>
+    </form>
+  </ng-template>
+</div>

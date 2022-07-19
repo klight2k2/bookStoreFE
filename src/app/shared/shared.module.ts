@@ -16,24 +16,33 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule } from '@angular/forms';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './loading/loading.component';
 const nzZorroModule = [
   NzButtonModule,
   NzMenuModule,
+  NzCheckboxModule,
   NzGridModule,
   NzDropDownModule,
   NzInputModule,
   NzIconModule,
   NzTableModule,
   NzBadgeModule,
-  NzPopoverModule,
   NzCardModule,
   NzCarouselModule,
   NzTabsModule,
+  NzPaginationModule,
+  NzPopoverModule,
+  NzSpinModule,
 ];
 
 
 const angularModule=[
-  FormsModule
+  FormsModule,
+  ReactiveFormsModule,
 ]
 
 @NgModule({
@@ -41,12 +50,14 @@ const angularModule=[
     HeaderComponent,
     FooterComponent,
     CartComponent,
+    LoadingComponent,
   ],
   imports: [CommonModule,...angularModule, ...nzZorroModule],
   exports: [
     HeaderComponent,
     FooterComponent,
     CartComponent,
+    LoadingComponent,
     ...nzZorroModule,
     ...angularModule
   ],

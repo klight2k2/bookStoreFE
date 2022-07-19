@@ -5,6 +5,7 @@
 
 $primary-color:#ff4157;
 
+@import './assets/variable.scss';
 
 :root {
   --primary-color:#ff4157;
@@ -76,4 +77,5 @@ $sizes:(0,2,4,8,10,12,16,20,24,32);
     padding-bottom: #{$size}px !important;
   }
 }
+
 

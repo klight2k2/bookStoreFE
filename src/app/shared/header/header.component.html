@@ -29,7 +29,7 @@
     <div nz-row nzAlign="middle" class="full-height">
       <div nz-col [nzSpan]="12">
         <ul nz-menu nzMode="horizontal">
-          <li nz-menu-item nzSelected>
+          <li nz-menu-item nzSelected (click)="navigateToHome()">
             <i nz-icon nzType="home"></i>
             Home
           </li>
@@ -37,6 +37,7 @@
             nz-menu-item
             nz-button
             nz-dropdown
+            (click)="navigateToList()"
             [nzDropdownMenu]="menu"
             [nzPlacement]="'bottomLeft'"
           >

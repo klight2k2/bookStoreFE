@@ -8,18 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class CategoryComponent implements OnInit {
   public categories=["Sách Tôn Giáo - Tâm Linh",  "Light novel","Truyện trinh thám","Truyện kiếm hiệp"
 
+  ];
+  public listPublisher=[
+    {id:1,name:"Wings Books",check:false},
+    {id:2,name:"Nhã Nam", check:false},
+    // {id:5,name:"Wings Books"},
+    // {id:6,name:"Wings Books"},
   ]
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  public isChecked:any;
-  public isCheckedName:any;
-  public checkboxData = [1,2,3,4,5,6,7,8];
-  onChange(e:any){
-    this.isChecked = !this.isChecked;
-    this.isCheckedName = e.target.name;
+  log(){
+    console.log(this.listPublisher)
   }
-
+  public minValue:number=0;
+  public maxValue:number=0;
 }

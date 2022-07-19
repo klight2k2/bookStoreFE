@@ -17,7 +17,7 @@ export class ShoppingCartComponent extends BaseComponent implements OnInit {
     this.shoppingCart.getCart()
     this.subscribeUntilDestroy<any>(this.shoppingCart.shoppingCartData,(data:any)=>{
       this.dataSet=data;
-      console.log(data)
+      // console.log(data)
     })
    }
 

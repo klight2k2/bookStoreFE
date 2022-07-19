@@ -6,6 +6,9 @@
   }
 }
 
+::ng-deep .ant-card-cover{
+  padding:1px;
+}
 ::ng-deep .ant-card-body{
   padding: 10px 20px;
 }

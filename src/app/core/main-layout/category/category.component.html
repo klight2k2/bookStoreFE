@@ -4,14 +4,24 @@
   <p>{{ category }}</p>
 </ng-container>
 <div>
-  <h2>Price</h2>
-  <div *ngFor="let name of checkboxData">
-    <input
-      type="checkbox"
-      [name]="name"
-      (change)="onChange($event)"
-      [disabled]="isChecked && isCheckedName != name"
-    />
-    {{ "Checkbox " + name }}
+  <h2>Giá</h2>
+  <p>Chọn giá trong khoảng</p>
+  <div nz-row class="d-flex align-center">
+    <input type="text" nz-input nz-col nzSpan="10" [(ngModel)]="minValue" />
+    <i nz-icon nzType="minus" class="mr-4 ml-4" nzTheme="outline"></i>
+    <input type="text" nz-input nz-col nzSpan="10" [(ngModel)]="maxValue" />
   </div>
 </div>
+<div nz-row>
+  <h2 nz-col>Nhà xuất bản</h2>
+  <div nz-col nzSpan="24" *ngFor="let publisher of listPublisher">
+    <label nz-checkbox [(ngModel)]="publisher.check">{{
+      publisher.name
+    }}</label>
+  </div>
+</div>
+<div class="mb-16">
+  <h2>Tên sách</h2>
+  <input type="text" nz-input />
+</div>
+<button nz-button nzBlock class="mr-16" class="search-btn">Search</button>

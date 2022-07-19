@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'list', loadChildren: () => import('./core/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
   {path:"shopping-cart",loadChildren:()=>import("./core/shopping-cart/shopping-cart.module").then((m)=>m.ShoppingCartModule)},
   { path: 'detail', loadChildren: () => import('./core/cart-detail/cart-detail.module').then(m => m.CartDetailModule) },
+  { path: 'login', loadChildren: () => import('./core/login/login.module').then(m => m.LoginModule) },
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shoppingCart/shopping-cart.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { ShoppingCartService } from 'src/app/services/shoppingCart/shopping-cart
 export class CartComponent implements OnInit {
   @Input() data:any;
   constructor(
-    private shoppingCartService:ShoppingCartService
+    private shoppingCartService:ShoppingCartService,
+    private _router:Router,
+
   ) { }
 
   ngOnInit(): void {
@@ -21,5 +24,10 @@ export class CartComponent implements OnInit {
   handleAddCart(cart:any){
   const {title,description,files}=cart;
     this.shoppingCartService.addCart({title:title,description:description,files:this.getLink(files),count:1});
+  }
+
+  navigateToDetail(){
+    this._router.navigate(['/detail']);
+
   }
 }
