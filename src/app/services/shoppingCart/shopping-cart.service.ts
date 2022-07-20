@@ -12,6 +12,7 @@ interface shoppingCart{
 })
 export class ShoppingCartService {
   public shoppingCartData=new BehaviorSubject<any>([]);
+  public shoppingCartCount=new BehaviorSubject<number>(0);
   constructor(
     private localStorageService:LocalStorageService,
   ) { }
@@ -20,8 +21,12 @@ export class ShoppingCartService {
     const currentCart=this.shoppingCartData.getValue()
      this.shoppingCartData.next([...currentCart,cart]);
      this.localStorageService.set('shopping_cart',this.shoppingCartData.getValue());
-  }
 
+  }
+  public getCountCart(){
+    this.getCart();
+   this.shoppingCartCount.next(this.shoppingCartData.getValue().length);
+  }
   public getCart(){
 
     this.shoppingCartData.next(this.localStorageService.get('shopping_cart'));

@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
-  public loadingService=new BehaviorSubject<boolean>(true);
-  public $loading=this.loadingService;
+  public loading$=new BehaviorSubject<boolean>(false);
+  public loginPage$=new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
   public setLoading(state:boolean){
-    this.$loading.next(state);
+    this.loading$.next(state);
+  }
+  public setLoginPage(state:boolean){
+    this.loginPage$.next(state);
   }
 }

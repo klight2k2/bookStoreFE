@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loading.component.scss']
 })
 export class LoadingComponent implements OnInit {
-  public $loading=this.commonService.$loading;
+  public loading$=this.commonService.loading$;
   constructor(private commonService:CommonService) { }
 
   ngOnInit(): void {

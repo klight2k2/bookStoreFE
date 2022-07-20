@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainLayoutComponent } from './main-layout.component';
+import { AdminComponent } from './admin.component';
 
-const routes: Routes = [{ path: '', component: MainLayoutComponent }];
+const routes: Routes = [{ path: '', component: AdminComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MainLayoutRoutingModule { }
+export class AdminRoutingModule { }

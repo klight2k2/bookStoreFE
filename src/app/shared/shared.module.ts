@@ -21,6 +21,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 const nzZorroModule = [
   NzButtonModule,
   NzMenuModule,
@@ -37,6 +39,7 @@ const nzZorroModule = [
   NzPaginationModule,
   NzPopoverModule,
   NzSpinModule,
+  NzToolTipModule,
 ];
 
 
@@ -51,6 +54,7 @@ const angularModule=[
     FooterComponent,
     CartComponent,
     LoadingComponent,
+    MainLayoutComponent,
   ],
   imports: [CommonModule,...angularModule, ...nzZorroModule],
   exports: [

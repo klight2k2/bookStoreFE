@@ -2,7 +2,7 @@
   <form
     [formGroup]="loginForm"
     class="login-form"
-    *ngIf="isLogin; else register"
+    *ngIf="isLogin$ | async; else register"
     (ngSubmit)="login()"
   >
     <div class="d-flex algin-center justify-center">
@@ -49,7 +49,7 @@
       <button nz-button type="submit" class="mt-16" nzBlock>Đăng kí</button>
       <div class="login-desc mt-16">
         <span>Bạn đã có tài khoản? </span>
-        <a (click)="toggleLogin()"> Đăng nhập</a>
+        <a (click)="toggleRegister()"> Đăng nhập</a>
       </div>
     </form>
   </ng-template>

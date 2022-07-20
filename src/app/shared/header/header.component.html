@@ -12,7 +12,7 @@
         <a
           routerLink="./shopping-cart"
           routerLinkActive="active"
-          (click)="navigateShoppingCart()"
+          (click)="navigate('shopping-cart')"
         >
           <img src="assets/icon/card.webp" alt="" class="card-logo" />
         </a>
@@ -29,7 +29,7 @@
     <div nz-row nzAlign="middle" class="full-height">
       <div nz-col [nzSpan]="12">
         <ul nz-menu nzMode="horizontal">
-          <li nz-menu-item nzSelected (click)="navigateToHome()">
+          <li nz-menu-item nzSelected (click)="navigate('home')">
             <i nz-icon nzType="home"></i>
             Home
           </li>
@@ -37,7 +37,7 @@
             nz-menu-item
             nz-button
             nz-dropdown
-            (click)="navigateToList()"
+            (click)="navigate('list')"
             [nzDropdownMenu]="menu"
             [nzPlacement]="'bottomLeft'"
           >
@@ -93,8 +93,10 @@
 
 <ng-template #login>
   <div class="login">
-    <p class="login-btn mr-20">Đăng kí</p>
-    <p class="login-btn">Đăng nhập</p>
+    <p class="login-btn mr-20" (click)="navigate('login', true, true)">
+      Đăng kí
+    </p>
+    <p class="login-btn" (click)="navigate('login', true)">Đăng nhập</p>
   </div>
 </ng-template>
 
