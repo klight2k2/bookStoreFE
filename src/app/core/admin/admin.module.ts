@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { NzLayoutModule} from 'ng-zorro-antd/layout'
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
   CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    NzLayoutModule,
+    NzAvatarModule,
   ]
 })
 export class AdminModule { }

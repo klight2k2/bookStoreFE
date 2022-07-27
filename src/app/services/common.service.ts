@@ -7,6 +7,8 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class CommonService {
   public loading$=new BehaviorSubject<boolean>(false);
   public loginPage$=new BehaviorSubject<boolean>(false);
+  public cartDetail$=new BehaviorSubject<any>('');
+
 
   constructor() { }
 
@@ -15,5 +17,8 @@ export class CommonService {
   }
   public setLoginPage(state:boolean){
     this.loginPage$.next(state);
+  }
+  public setCartDetail(data:any){
+    this.cartDetail$.next(data);
   }
 }

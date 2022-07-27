@@ -54,7 +54,6 @@ const angularModule=[
     FooterComponent,
     CartComponent,
     LoadingComponent,
-    MainLayoutComponent,
   ],
   imports: [CommonModule,...angularModule, ...nzZorroModule],
   exports: [

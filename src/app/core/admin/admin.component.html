@@ -1,36 +1,82 @@
-<div class="wrapper">
-  <button nz-button nzType="primary" (click)="toggleCollapsed()">
-    <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
-  </button>
-  <ul nz-menu nzMode="inline" nzTheme="dark" [nzInlineCollapsed]="isCollapsed">
-    <li
-      nz-menu-item
-      nz-tooltip
-      nzTooltipPlacement="right"
-      [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''"
-      nzSelected
-    >
-      <i nz-icon nzType="mail"></i>
-      <span>Navigation One</span>
-    </li>
-    <li nz-submenu nzTitle="Navigation Two" nzIcon="appstore">
-      <ul>
-        <li nz-menu-item>Option 5</li>
-        <li nz-menu-item>Option 6</li>
-        <li nz-submenu nzTitle="Submenu">
-          <ul>
-            <li nz-menu-item>Option 7</li>
-            <li nz-menu-item>Option 8</li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li nz-submenu nzTitle="Navigation Three" nzIcon="setting">
-      <ul>
-        <li nz-menu-item>Option 9</li>
-        <li nz-menu-item>Option 10</li>
-        <li nz-menu-item>Option 11</li>
-      </ul>
-    </li>
-  </ul>
-</div>
+<nz-layout class="wrapper">
+  <nz-sider
+    class="sidebar"
+    [nzWidth]="240"
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <ul nz-menu nzMode="inline" nzTheme="light" style="height: 100%">
+      <div class="d-flex justify-flex-end">
+        <img
+          src="assets/icon/logo.webp"
+          alt=""
+          class="sidebar-logo"
+          *ngIf="!isCollapsed"
+        />
+        <button
+          nz-button
+          (click)="toggleCollapsed()"
+          class="sidebar-btn mr-16 mb-8 mt-16"
+        >
+          <i nz-icon [nzType]="isCollapsed ? 'arrow-right' : 'arrow-left'"></i>
+        </button>
+      </div>
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        [nzTooltipTitle]="isCollapsed ? 'Navigation One' : ''"
+        nzSelected
+      >
+        <i nz-icon nzType="user"></i>
+        <span>Quản lý người dùng</span>
+      </li>
+      <li nz-submenu nzTitle="Quản lý sách" nzIcon="appstore">
+        <ul>
+          <li nz-menu-item>Add book</li>
+          <li nz-menu-item>List book</li>
+          <li nz-submenu nzTitle="Submenu">
+            <ul>
+              <li nz-menu-item>Option 7</li>
+              <li nz-menu-item>Option 8</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Quản lý đơn hàng" nzIcon="setting">
+        <ul>
+          <li nz-menu-item>Option 9</li>
+          <li nz-menu-item>Option 10</li>
+          <li nz-menu-item>Option 11</li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout nzTheme="light">
+    <nz-header nzTheme="light">
+      <div class="d-flex align-center justify-flex-end" style="height: 100%">
+        <div
+          nz-popover
+          [nzPopoverContent]="popover"
+          class="d-flex align-center justify-flex-end"
+          style="height: 30px"
+        >
+          <nz-avatar
+            nzIcon="user"
+            nzSrc="assets/avt/2.jpg"
+            class="d-flex align-center justify-center"
+          ></nz-avatar>
+
+          Thu Phương
+        </div>
+      </div>
+    </nz-header>
+  </nz-layout>
+</nz-layout>
+<ng-template #popover>
+  <div>
+    <p>Tài khoản</p>
+    <p>Đăng xuất</p>
+  </div>
+</ng-template>

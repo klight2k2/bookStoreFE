@@ -6,7 +6,7 @@
     (ngSubmit)="login()"
   >
     <div class="d-flex algin-center justify-center">
-      <img src="assets/icon/logo.webp" alt="" />
+      <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
     </div>
     <label for="user">Tài khoản</label>
     <input type="text" id="user" nz-input formControlName="username" />
@@ -37,7 +37,7 @@
   <ng-template #register>
     <form class="login-form">
       <div class="d-flex algin-center justify-center">
-        <img src="assets/icon/logo.webp" alt="" />
+        <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
       </div>
       <label for="user">Tài khoản</label>
 

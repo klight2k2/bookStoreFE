@@ -1,10 +1,7 @@
 <div class="container mt-32 mb-32">
   <div nz-row>
     <div nz-col nzSpan="8">
-      <img
-        src="assets/full/1b555cdf7cca05ab73baf07a70d6e56fc7aae14d.jpg"
-        alt=""
-      />
+      <img [src]="getLink(dataSet.files)" alt="" />
     </div>
     <div nz-col nzSpan="16">
       <h2 class="cart-detail-title">
@@ -31,7 +28,13 @@
           <i nz-icon nzType="plus" nzTheme="outline"></i>
         </button>
       </div>
-      <button class="cart-detail-btn" nz-button>Chọn mua</button>
+      <button
+        class="cart-detail-btn"
+        (click)="handleAddCart(dataSet)"
+        nz-button
+      >
+        Chọn mua
+      </button>
     </div>
   </div>
   <div>

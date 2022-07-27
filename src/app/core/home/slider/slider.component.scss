@@ -1,4 +1,4 @@
-
+@import "../../../../styles.scss";
 .slider-img{
   height: 75vh;
   width: 100%;
@@ -9,7 +9,7 @@
   position: relative;
 }
 ::ng-deep .ant-btn-primary{
-  background: var(--primary-color) !important;
+  background: $primary-color !important;
     color:#fff !important;
     border:none;
   }

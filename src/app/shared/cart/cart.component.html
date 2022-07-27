@@ -3,7 +3,6 @@
   [nzCover]="coverTemplate"
   [nzActions]="[actionSetting]"
   [nzHoverable]="true"
-  (click)="navigateToDetail()"
 >
   <nz-card-meta [nzTitle]="data.title"> </nz-card-meta>
   <h3>Giá :{{ data.price | currency: "VND":true }}</h3>
@@ -22,7 +21,11 @@
   </div> -->
 <!-- </nz-card> -->
 <ng-template #coverTemplate>
-  <img alt="example" [src]="getLink(data.files)" />
+  <img
+    alt="example"
+    [src]="getLink(data.files)"
+    (click)="navigateToDetail(data)"
+  />
 </ng-template>
 <ng-template #actionSetting>
   <i

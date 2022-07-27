@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit {
     this._router.navigate(['/login'])
 
   }
-
+  public navigate(navigateAddress:string){
+    this._router.navigate(['/home'])
+  }
   public login(){
     console.log("hello")
   }
