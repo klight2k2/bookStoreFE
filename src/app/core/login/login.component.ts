@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth/auth.service';
+import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -14,7 +16,9 @@ export class LoginComponent implements OnInit {
   public  isLogin$=new BehaviorSubject<boolean>(true);
   constructor(private fb: FormBuilder,
     private _route:ActivatedRoute,
-    private _router:  Router
+    private _router:  Router,
+    private http:HttpClient,
+    private auth:AuthService
     ) { }
 
   public loginForm=this.fb.group({
@@ -42,6 +46,7 @@ export class LoginComponent implements OnInit {
   }
   public login(){
     console.log("hello")
+    this.auth.login()
   }
 
 }

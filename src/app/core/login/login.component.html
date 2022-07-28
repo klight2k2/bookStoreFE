@@ -3,7 +3,6 @@
     [formGroup]="loginForm"
     class="login-form"
     *ngIf="isLogin$ | async; else register"
-    (ngSubmit)="login()"
   >
     <div class="d-flex algin-center justify-center">
       <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
@@ -28,7 +27,7 @@
     >
       Is required
     </div>
-    <button nz-button class="mt-16" nzBlock>Đăng nhập</button>
+    <button nz-button class="mt-16" (click)="login()" nzBlock>Đăng nhập</button>
     <div class="login-desc mt-16">
       <span>Bạn chưa có tài khoản? </span>
       <a (click)="toggleLogin()">Đăng kí</a>
