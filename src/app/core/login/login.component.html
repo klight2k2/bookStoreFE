@@ -9,11 +9,11 @@
       <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
     </div>
     <label for="user">Tài khoản</label>
-    <input type="text" id="user" nz-input formControlName="username" />
+    <input type="text" id="user" nz-input formControlName="email" />
     <div
       *ngIf="
-        loginForm.controls['username'].hasError('required') &&
-        loginForm.controls['username'].touched
+        loginForm.controls['email'].hasError('required') &&
+        loginForm.controls['email'].touched
       "
     >
       Is required
@@ -28,7 +28,7 @@
     >
       Is required
     </div>
-    <button nz-button class="mt-16" nzBlock>Đăng nhập</button>
+    <button nz-button class="mt-16" (click)="login()" nzBlock>Đăng nhập</button>
     <div class="login-desc mt-16">
       <span>Bạn chưa có tài khoản? </span>
       <a (click)="toggleLogin()">Đăng kí</a>

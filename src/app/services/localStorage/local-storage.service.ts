@@ -29,4 +29,8 @@ export class LocalStorageService {
   private getKey(key:string){
     return `${this.prefix}_${key}`;
   }
+
+  public getToken(){
+    return this.get('token');
+  }
 }

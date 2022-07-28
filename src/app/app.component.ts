@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from './services/common.service';
 import { BaseComponent } from 'src/app/core/base/base/base.component';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent extends BaseComponent implements OnInit {
   isAdmin=true;
   loginPage$=this.commonService.loginPage$;
   constructor(
-    private commonService:CommonService
+    private commonService:CommonService,
+    private auth:AuthService
   ){super()}
 
   override  preInit(): void {
@@ -24,5 +26,9 @@ export class AppComponent extends BaseComponent implements OnInit {
       this.commonService.setLoading(false)
     this.commonService.setLoginPage(true)
 
+  }
+
+  public enterLogin(){
+    this.auth.login('hê')
   }
 }
