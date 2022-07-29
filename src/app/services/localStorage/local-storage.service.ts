@@ -15,7 +15,14 @@ export class LocalStorageService {
   }
 
   public get(key:string){
-    return JSON.parse(this.localStorage.getItem(this.getKey(key)) || '');
+    try{
+
+      console.log(JSON.parse(this.localStorage.getItem(this.getKey(key)) || '') ,'hê');
+      return JSON.parse(this.localStorage.getItem(this.getKey(key)) || '');
+    }catch(er){
+      console.log(er);
+
+    }
   }
 
   public remove(key:string){
@@ -31,6 +38,14 @@ export class LocalStorageService {
   }
 
   public getToken(){
-    return this.get('token');
+    return this.get('token') || '';
+  }
+  public setToken(token:string){
+    console.log(token,"nay");
+
+     this.set('token',token)
+  }
+  public removeToken(){
+     this.remove('token')
   }
 }

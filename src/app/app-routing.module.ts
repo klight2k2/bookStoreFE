@@ -1,6 +1,7 @@
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './shared/authGuard/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'detail', component:MainLayoutComponent ,loadChildren: () => import('./core/cart-detail/cart-detail.module').then(m => m.CartDetailModule) },
   { path: 'login' , loadChildren: () => import('./core/login/login.module').then(m => m.LoginModule) },
   { path: 'admin', loadChildren: () => import('./core/admin/admin.module').then(m => m.AdminModule) },
-  { path: 'mainLayout', loadChildren: () => import('./shared/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
+  { path: 'mainLayout', canActivate:[AuthGuard],loadChildren: () => import('./shared/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
 ];
 
 @NgModule({

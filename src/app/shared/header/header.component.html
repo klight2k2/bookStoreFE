@@ -69,7 +69,7 @@
       </div>
       <div nz-col [nzSpan]="4">
         <div
-          *ngIf="isLogined; else login"
+          *ngIf="isLogined$ | async; else login"
           class="ml-16 logined"
           nz-popover
           nzType="primary"
@@ -78,7 +78,9 @@
           nzPopoverPlacement="bottom"
         >
           <img src="assets/avt/2.jpg" alt="" class="user-avt" />
-          <h2 class="user-name">Thu Phương</h2>
+          <h2 class="user-name">
+            {{ user?.name }}
+          </h2>
         </div>
       </div>
     </div>
@@ -102,5 +104,5 @@
 
 <ng-template #loginedInfo>
   <p>Đơn mua</p>
-  <p>Đăng xuất</p>
+  <p (click)="logOut()">Đăng xuất</p>
 </ng-template>

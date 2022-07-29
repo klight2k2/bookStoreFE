@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/core/base/base/base.component';
 import { CommonService } from 'src/app/services/common.service';
+import { AuthService } from './../../services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,23 +12,29 @@ import { CommonService } from 'src/app/services/common.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
-  public isLogined:boolean = false;
+  public isLogined$=this.commonService.logined$;
+  public user:any;
   public countCart=0;
   constructor(
     private _router:Router,
     private shoppingCartService:ShoppingCartService,
     private commonService:CommonService,
+    private auth:AuthService
   ) { super()}
   public categories=["Art & Music","Biographies","Business",
   "Comic","Computers & Tech","Cooking","Edu & Refference","Entertainment"]
 
   override preInit(){
+    this.subscribeUntilDestroy(this.commonService.user$,(data:any)=>{
+      this.user=data;
+    })
   }
   override postInit(){
     this.shoppingCartService.getCountCart()
     this.subscribeUntilDestroy<any>(this.shoppingCartService.shoppingCartData,(data:any)=>{
       this.countCart=data.length | 0;
     })
+
   }
 
   navigateToList(){
@@ -55,5 +62,8 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
       this._router.navigate(['/'+navigateAdress]);
     }
+  }
+  logOut(){
+  this.auth.signOut();
   }
 }

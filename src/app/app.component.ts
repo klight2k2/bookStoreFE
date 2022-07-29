@@ -19,16 +19,14 @@ export class AppComponent extends BaseComponent implements OnInit {
 
   override  preInit(): void {
     this.commonService.setLoading(true)
+    this.auth.checkLogin();
+    this.commonService.setLoading(false)
 
 
   }
   override postInit(): void {
-      this.commonService.setLoading(false)
     this.commonService.setLoginPage(true)
 
   }
 
-  public enterLogin(){
-    this.auth.login('hê')
-  }
 }
