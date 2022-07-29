@@ -17,7 +17,6 @@ export class LocalStorageService {
   public get(key:string){
     try{
 
-      console.log(JSON.parse(this.localStorage.getItem(this.getKey(key)) || '') ,'hê');
       return JSON.parse(this.localStorage.getItem(this.getKey(key)) || '');
     }catch(er){
       console.log(er);
@@ -41,8 +40,6 @@ export class LocalStorageService {
     return this.get('token') || '';
   }
   public setToken(token:string){
-    console.log(token,"nay");
-
      this.set('token',token)
   }
   public removeToken(){

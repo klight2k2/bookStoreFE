@@ -17,13 +17,11 @@ export class ShoppingCartComponent extends BaseComponent implements OnInit {
     this.shoppingCart.getCart()
     this.subscribeUntilDestroy<any>(this.shoppingCart.shoppingCartData,(data:any)=>{
       this.dataSet=data;
-      // console.log(data)
     })
    }
 
     public changeCountBook(event:any,index:any){
       this.dataSet[index].count=event.target.value;
-      console.log(  this.dataSet[index].count )
      this.shoppingCart.shoppingCartData.next(this.dataSet)
      this.shoppingCart.updateCart();
     }

@@ -1,0 +1,5 @@
+export enum HttpResponseCode{
+  SUCCESS=200,
+  INTERNAL_SERVER_ERROR=500,
+  UNATHORIZED=401
+}

@@ -17,6 +17,7 @@ import { LocalStorageService } from './../../services/localStorage/local-storage
 export class LoginComponent extends BaseComponent implements OnInit {
 
   public  isLogin$=new BehaviorSubject<boolean>(true);
+  public  isRegister$=new BehaviorSubject<boolean>(true);
   constructor(private fb: FormBuilder,
     private _route:ActivatedRoute,
     private _router:  Router,
@@ -31,9 +32,19 @@ export class LoginComponent extends BaseComponent implements OnInit {
     password:new FormControl('',[Validators.required]),
   })
 
+  public registerForm=this.fb.group({
+    email:new FormControl('',[Validators.required]),
+    password:new FormControl('',[Validators.required]),
+    fullname:new FormControl('',[Validators.required]),
+    dob:new FormControl('',[Validators.required]),
+    phone_number:new FormControl('',[Validators.required]),
+    address:new FormControl('',[Validators.required]),
+  })
+
   override preInit(): void {
     this._route.queryParams.subscribe(data=>{
       this.isLogin$.next(!data['isRegister']);
+      this.isRegister$.next(data['isRegister']);
     })
     // this.ChangeDetectionStrategy.OnPush(this.isLogin$)
     // this.isLogin$=!this._route.snapshot.queryParamMap.get('isRegister')
@@ -50,11 +61,9 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this._router.navigate(['/home'])
   }
   public login(){
-    console.log("hello")
     this.subcribeOnce<any>(
     this.auth.login(this.loginForm.value),
       (res:any)=>{
-        console.log(res)
         this.common.setUser(res.user);
         this.localStorageService.setToken(res.token);
         this.localStorageService.set('user',res.user);
@@ -63,5 +72,15 @@ export class LoginComponent extends BaseComponent implements OnInit {
       }
     )
   }
+  public register(){
+    this.subcribeOnce<any>(
+    this.auth.register(this.registerForm.value),
+      (res:any)=>{
+        this._router.navigate(['/login'])
+      }
+    )
+  }
+
+
 
 }

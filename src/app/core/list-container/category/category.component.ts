@@ -19,9 +19,6 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  log(){
-    console.log(this.listPublisher)
-  }
   public minValue:number=0;
   public maxValue:number=0;
 }

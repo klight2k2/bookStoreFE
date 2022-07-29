@@ -53,7 +53,6 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   navigate(navigateAdress:string,isLoginPage=false,isRegister=false){
     if(isLoginPage) {
       this.commonService.setLoginPage(false);
-      // console.log("hhhh",this.commonService.loginPage$.getValue())
     }
     if(isRegister){
       this._router.navigate(['/'+navigateAdress],{queryParams:{isRegister:true}});

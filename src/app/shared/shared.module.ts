@@ -23,6 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+
 const nzZorroModule = [
   NzButtonModule,
   NzMenuModule,
@@ -40,6 +42,7 @@ const nzZorroModule = [
   NzPopoverModule,
   NzSpinModule,
   NzToolTipModule,
+  NzNotificationModule
 ];
 
 

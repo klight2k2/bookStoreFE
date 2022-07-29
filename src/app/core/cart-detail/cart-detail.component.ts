@@ -16,7 +16,6 @@ export class CartDetailComponent extends BaseComponent implements OnInit {
 
   override preInit(){
     this.subscribeUntilDestroy(this.commonService.cartDetail$,(data:any)=>{
-      console.log("have data", data)
       this.dataSet=data;
     })
   }

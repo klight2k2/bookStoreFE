@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { CommonService } from 'src/app/services/common.service';
 import { LocalStorageService } from './../localStorage/local-storage.service';
+import { catchError, of, throwError } from 'rxjs';
 const AUTH_API = 'http://localhost:3000/api/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' ,
@@ -16,13 +17,23 @@ export class AuthService {
   constructor(private http:HttpClient,
     private commonService:CommonService,
     private localStorageService:LocalStorageService) { }
-  login(data:any): Observable<any> {
+  public login(data:any): Observable<any> {
     return this.http.post(
       AUTH_API + 'login',
      data,
       httpOptions
+    )
+
+  }
+  public register(data:any): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'register',
+     data,
+      httpOptions
     );
   }
+
+
 
   signOut(){
     this.commonService.setLogined(false);
@@ -32,7 +43,6 @@ export class AuthService {
   checkLogin(){
     const token=this.localStorageService.getToken() || '';
     if(!!token){
-      console.log(token)
       const user=this.localStorageService.get('user');
       this.commonService.setUser(user);
       this.commonService.setLogined(true);

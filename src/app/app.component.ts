@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from './services/common.service';
 import { BaseComponent } from 'src/app/core/base/base/base.component';
 import { AuthService } from './services/auth/auth.service';
+import { NotificationService } from './services/notification/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent extends BaseComponent implements OnInit {
   loginPage$=this.commonService.loginPage$;
   constructor(
     private commonService:CommonService,
-    private auth:AuthService
+    private auth:AuthService,
+    private notification:NotificationService
   ){super()}
 
   override  preInit(): void {

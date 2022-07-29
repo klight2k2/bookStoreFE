@@ -11,7 +11,8 @@ export class CommonService {
   public logined$=new BehaviorSubject<boolean>(false);
   public user$=new BehaviorSubject<any>('');
 
-  constructor() { }
+  constructor(
+  ) { }
 
   public setLoading(state:boolean){
     this.loading$.next(state);

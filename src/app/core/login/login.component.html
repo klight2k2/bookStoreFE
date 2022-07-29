@@ -1,9 +1,5 @@
 <div class="login">
-  <form
-    [formGroup]="loginForm"
-    class="login-form"
-    *ngIf="isLogin$ | async; else register"
-  >
+  <form [formGroup]="loginForm" class="login-form" *ngIf="isLogin$ | async">
     <div class="d-flex algin-center justify-center">
       <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
     </div>
@@ -33,23 +29,41 @@
       <a (click)="toggleLogin()">Đăng kí</a>
     </div>
   </form>
-  <ng-template #register>
-    <form class="login-form">
-      <div class="d-flex algin-center justify-center">
-        <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
-      </div>
-      <label for="user">Tài khoản</label>
+  <form
+    class="login-form"
+    [formGroup]="registerForm"
+    *ngIf="isRegister$ | async"
+  >
+    <div class="d-flex algin-center justify-center">
+      <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
+    </div>
+    <label for="email">email</label>
 
-      <input type="text" id="user" nz-input />
-      <label for="password">Mật khẩu</label>
-      <input type="password" id="password" nz-input />
-      <label for="rePassword">Nhập lại mật khẩu</label>
-      <input type="rePassword" id="rePassword" nz-input />
-      <button nz-button type="submit" class="mt-16" nzBlock>Đăng kí</button>
-      <div class="login-desc mt-16">
-        <span>Bạn đã có tài khoản? </span>
-        <a (click)="toggleRegister()"> Đăng nhập</a>
-      </div>
-    </form>
-  </ng-template>
+    <input type="text" id="email" nz-input formControlName="email" />
+    <label for="password">Mật khẩu</label>
+    <input type="password" id="password" nz-input formControlName="password" />
+
+    <label for="dob">Ngày sinh</label>
+    <input type="date" id="dob" nz-input formControlName="dob" />
+
+    <label for="fullname">Họ và tên</label>
+    <input type="text" id="fullname" nz-input formControlName="fullname" />
+    <label for="address">Địa chỉ</label>
+    <input type="text" id="address" nz-input formControlName="address" />
+    <label for="phone_number">Số điện thoại</label>
+    <input
+      type="text"
+      id="phone_number"
+      nz-input
+      formControlName="phone_number"
+    />
+
+    <button nz-button type="submit" class="mt-16" nzBlock (click)="register()">
+      Đăng kí
+    </button>
+    <div class="login-desc mt-16">
+      <span>Bạn đã có tài khoản? </span>
+      <a (click)="toggleRegister()"> Đăng nhập</a>
+    </div>
+  </form>
 </div>
