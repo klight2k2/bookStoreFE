@@ -3,7 +3,6 @@
     [formGroup]="loginForm"
     class="login-form"
     *ngIf="isLogin$ | async; else register"
-    (ngSubmit)="login()"
   >
     <div class="d-flex algin-center justify-center">
       <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
