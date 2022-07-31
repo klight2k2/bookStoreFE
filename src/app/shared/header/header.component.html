@@ -25,9 +25,9 @@
   </div>
 </div>
 <div class="headerContainer">
-  <div class="container">
+  <div class="container full-height">
     <div nz-row nzAlign="middle" class="full-height">
-      <div nz-col [nzSpan]="12">
+      <div nz-col [nzSpan]="12" class="mb-8">
         <ul nz-menu nzMode="horizontal">
           <li
             nz-menu-item
@@ -79,12 +79,11 @@
           class="ml-16 logined"
           nz-popover
           nzType="primary"
-          nzPopoverTitle="Thông tin tài khoản"
           [nzPopoverContent]="loginedInfo"
           nzPopoverPlacement="bottom"
         >
           <img src="assets/avt/2.jpg" alt="" class="user-avt" />
-          <h2 class="user-name">
+          <h2 class="user-name ml-8">
             {{ user?.name }}
           </h2>
         </div>
@@ -109,6 +108,8 @@
 </ng-template>
 
 <ng-template #loginedInfo>
-  <p>Đơn mua</p>
-  <p (click)="logOut()">Đăng xuất</p>
+  <ul nz-menu style="background-color: #fff">
+    <li nz-menu-item class="login-menu">Đơn mua</li>
+    <li nz-menu-item class="login-menu" (click)="logOut()">Đăng xuất</li>
+  </ul>
 </ng-template>

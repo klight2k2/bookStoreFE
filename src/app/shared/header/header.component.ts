@@ -87,7 +87,10 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     }
   }
   logOut(){
+    this.commonService.setLoading(true)
   this.auth.signOut();
+    this.navigate('home');
+    this.commonService.setLoading(false)
   }
 
   searchByTitle(){
