@@ -1,5 +1,5 @@
 # BookStoreFE
-b1: npm install -g @angular/cli \n
+b1: npm install -g @angular/cli 
 
 b2: mở powershell với quyền admin chạy câu lệnh Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 
