@@ -12,35 +12,49 @@
         <th>Số lượng</th>
         <th>Số tiền</th>
         <th>Xóa</th>
+        <th>
+          <label
+            nz-checkbox
+            (change)="changeCheckAll()"
+            [(ngModel)]="checkAll"
+          ></label>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ data.title }}</td>
-        <td><img [src]="data.files" alt="" class="cart-image" /></td>
+        <td><img [src]="getLink(data.image)" alt="" class="cart-image" /></td>
 
-        <td>{{ data.const }}</td>
+        <td>{{ data.price | currency: "VND":true }}</td>
         <td>
           <input
             type="number"
             nz-input
             style="width: 50px"
-            (change)="changeCountBook($event, i)"
-            value="{{ data.count }}"
+            (onChange)="changeCountBook($event, i)"
+            value="{{ data.num }}"
           />
         </td>
-        <td>{{ data.free }}</td>
+        <td>{{ data.price * data.num | currency: "VND":true }}</td>
         <td>
           <button nz-button nzDanger (click)="deleteBook(i)">
             <i nz-icon nzType="delete" nzTheme="fill"></i>
             Delete
           </button>
         </td>
+        <td>
+          <label
+            nz-checkbox
+            (change)="changeCheck()"
+            [(ngModel)]="data.check"
+          ></label>
+        </td>
       </tr>
     </tbody>
   </nz-table>
   <div class="d-flex align-center justify-flex-end mb-16 mr-16">
-    <button nz-button class="">Đặt hàng</button>
+    <button nz-button class="" (click)="order()">Đặt hàng</button>
   </div>
 </div>

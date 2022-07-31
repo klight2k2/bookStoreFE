@@ -1,24 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { BaseComponent } from './../../base/base/base.component';
+import { BookService } from './../../../services/book/book.service';
+import { publish } from 'rxjs'
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit {
-  public categories=["Sách Tôn Giáo - Tâm Linh",  "Light novel","Truyện trinh thám","Truyện kiếm hiệp"
+export class CategoryComponent extends BaseComponent implements OnInit,OnDestroy {
+  public categories:any;
+  public publishers:any;
+  public selectedPublisherId=1;
+  public maxPrice:number=0;
+  public minPrice:number=0;
+  public bookName='';
+  public authorName='';
+  constructor(
+  private bookService:BookService,
+  private commonService:CommonService
 
-  ];
-  public listPublisher=[
-    {id:1,name:"Wings Books",check:false},
-    {id:2,name:"Nhã Nam", check:false},
-    // {id:5,name:"Wings Books"},
-    // {id:6,name:"Wings Books"},
-  ]
-  constructor() { }
+  ) {
+    super();
+   }
+  override  preInit(): void {
+      this.subscribeUntilDestroy(this.bookService.getCategories(),(categories:any)=>{
+        this.categories  =categories.map((category:any)=>{
+          return {...category,check:false}
+        });
+        console.log(categories);
 
-  ngOnInit(): void {
+      })
+      this.subscribeUntilDestroy(this.bookService.getPublishers(),(publishers:any)=>{
+        this.publishers  =publishers.map((publisher:any)=>{
+          return {...publisher,check:false}
+        });
+        console.log(publishers);
+
+      })
   }
-  public minValue:number=0;
-  public maxValue:number=0;
+
+  public searchAdvance(){
+    const selectedCategoriesId=this.categories.filter((category:any)=>category.check===true).map((category:any)=>category.id)
+    console.log({bookName:this.bookName,maxPrice:this.maxPrice,minPrice:this.minPrice,selectedPublisherId:this.selectedPublisherId,selectedCategoriesId});
+    const data={bookName:this.bookName,authorName:this.authorName,maxPrice:this.maxPrice,minPrice:this.minPrice,selectedPublisherId:this.selectedPublisherId,selectedCategoriesId}
+    this.subscribeUntilDestroy(this.bookService.searchAdvance(data),(listCart:any)=>{
+      this.commonService.setListCart(listCart)
+    })
+  }
 }

@@ -20,12 +20,9 @@ export class CartDetailComponent extends BaseComponent implements OnInit {
     })
   }
 
-  public getLink(link:string):string{
-    return `assets/${link}`
-  }
   public handleAddCart(cart:any){
-    const {title,description,files}=cart;
-      this.shoppingCartService.addCart({title:title,description:description,files:this.getLink(files),count:this.num});
+      cart.num=this.num;
+      this.shoppingCartService.addCart(cart);
     }
 
   public decreaseNum():void{

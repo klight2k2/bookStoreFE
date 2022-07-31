@@ -44,5 +44,7 @@ export class LocalStorageService {
   }
   public removeToken(){
      this.remove('token')
+     this.remove('user')
   }
+
 }

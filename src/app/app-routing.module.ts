@@ -16,6 +16,8 @@ const routes: Routes = [
   { path: 'login' , loadChildren: () => import('./core/login/login.module').then(m => m.LoginModule) },
   { path: 'admin', loadChildren: () => import('./core/admin/admin.module').then(m => m.AdminModule) },
   { path: 'mainLayout', canActivate:[AuthGuard],loadChildren: () => import('./shared/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
+  { path: 'orders', component:MainLayoutComponent , canActivate:[AuthGuard],loadChildren: () => import('./core/orders/orders.module').then(m => m.OrdersModule) },
+  { path: 'purchase', component:MainLayoutComponent ,loadChildren: () => import('./core/purchase/purchase.module').then(m => m.PurchaseModule) },
 ];
 
 @NgModule({

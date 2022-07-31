@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/core/base/base/base.component';
 import { CommonService } from 'src/app/services/common.service';
 import { AuthService } from './../../services/auth/auth.service';
+import { BookService } from './../../services/book/book.service';
 
 @Component({
   selector: 'app-header',
@@ -14,17 +15,29 @@ import { AuthService } from './../../services/auth/auth.service';
 export class HeaderComponent extends BaseComponent implements OnInit {
   public isLogined$=this.commonService.logined$;
   public user:any;
+  public bookTitle='';
   public countCart=0;
+  public navigateList={
+    home:true,
+    category:false
+  };
   constructor(
     private _router:Router,
     private shoppingCartService:ShoppingCartService,
     private commonService:CommonService,
-    private auth:AuthService
+    private auth:AuthService,
+    private bookService:BookService
   ) { super()}
-  public categories=["Art & Music","Biographies","Business",
-  "Comic","Computers & Tech","Cooking","Edu & Refference","Entertainment"]
+  public categories:any;
 
   override preInit(){
+    this.subscribeUntilDestroy(this.bookService.getCategories(),(categories:any)=>{
+      this.categories  =categories.map((category:any)=>{
+        return {...category,check:false}
+      });
+      console.log(categories);
+
+    })
     this.subscribeUntilDestroy(this.commonService.user$,(data:any)=>{
       this.user=data;
     })
@@ -32,7 +45,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   override postInit(){
     this.shoppingCartService.getCountCart()
     this.subscribeUntilDestroy<any>(this.shoppingCartService.shoppingCartData,(data:any)=>{
-      this.countCart=data.length | 0;
+      this.countCart=data?.length || 0;
     })
 
   }
@@ -51,6 +64,17 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
   }
   navigate(navigateAdress:string,isLoginPage=false,isRegister=false){
+    console.log(this._router.url);
+    if(navigateAdress=='/home') {
+      this.navigateList.home=true;
+      this.navigateList.category=false;
+    }
+    if(navigateAdress=='/list'){
+      this.navigateList.home=false;
+      this.navigateList.category=true;
+    }
+
+
     if(isLoginPage) {
       this.commonService.setLoginPage(false);
     }
@@ -64,5 +88,21 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   }
   logOut(){
   this.auth.signOut();
+  }
+
+  searchByTitle(){
+    this.subscribeUntilDestroy(this.bookService.searchByTitle({bookTitle:this.bookTitle}),(listCart:any)=>{
+      this.commonService.setListCart(listCart)
+      this.navigate('list')
+    })
+  }
+
+  getAll(){
+    this.subscribeOnce(this.bookService.getAll(), (listCart:any)=>{
+      this.navigate('list')
+      this.commonService.setListCart(listCart)
+      console.log("click");
+
+    })
   }
 }

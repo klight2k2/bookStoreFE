@@ -1,0 +1,17 @@
+<div class="container">
+  <div nz-row>
+    <div nz-col>
+      <h2>Mã đơn hàng: fasdfasdfasdf</h2>
+      <nz-steps [nzCurrent]="0">
+        <nz-step nzTitle="Đặt hàng thành công" nzIcon="check-circle"></nz-step>
+        <nz-step nzTitle="Đang giao hàng" nzIcon="solution"></nz-step>
+        <nz-step nzTitle="Done" nzIcon="shopping"></nz-step>
+        <nz-step nzTitle="Đã hủy" nzIcon="smile"></nz-step>
+        <ng-template #iconTemplate><i nz-icon nzType="smile"></i></ng-template>
+      </nz-steps>
+    </div>
+    <div nz-col>
+      <h2>Sản phẩm</h2>
+    </div>
+  </div>
+</div>

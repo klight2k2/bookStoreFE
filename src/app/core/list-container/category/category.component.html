@@ -1,27 +1,45 @@
-<h2>Category</h2>
+<h2>Nhà xuất bản</h2>
 
-<ng-container *ngFor="let category of categories">
-  <p>{{ category }}</p>
-</ng-container>
+<nz-select
+  nzShowSearch
+  nzAllowClear
+  nzPlaceHolder="Select a publisher"
+  style="width: 100%"
+  [(ngModel)]="selectedPublisherId"
+>
+  <ng-container *ngFor="let publisher of publishers">
+    <nz-option [nzLabel]="publisher.name" [nzValue]="publisher.id"></nz-option>
+  </ng-container>
+</nz-select>
 <div>
   <h2>Giá</h2>
-  <p>Chọn giá trong khoảng</p>
+  <p>Chọn giá trong khoảng: đ</p>
   <div nz-row class="d-flex align-center">
-    <input type="text" nz-input nz-col nzSpan="10" [(ngModel)]="minValue" />
+    <input type="text" nz-input nz-col nzSpan="10" [(ngModel)]="minPrice" />
     <i nz-icon nzType="minus" class="mr-4 ml-4" nzTheme="outline"></i>
-    <input type="text" nz-input nz-col nzSpan="10" [(ngModel)]="maxValue" />
+    <input type="text" nz-input nz-col nzSpan="10" [(ngModel)]="maxPrice" />
   </div>
 </div>
 <div nz-row>
-  <h2 nz-col>Nhà xuất bản</h2>
-  <div nz-col nzSpan="24" *ngFor="let publisher of listPublisher">
-    <label nz-checkbox [(ngModel)]="publisher.check">{{
-      publisher.name
-    }}</label>
+  <h2 nz-col>Thể loại</h2>
+  <div nz-col nzSpan="24" *ngFor="let category of categories">
+    <label nz-checkbox [(ngModel)]="category.check">{{ category.name }}</label>
   </div>
 </div>
 <div class="mb-16">
-  <h2>Tên sách</h2>
-  <input type="text" nz-input />
+  <h2>Tên tác giả</h2>
+  <input type="text" nz-input [(ngModel)]="authorName" />
 </div>
-<button nz-button nzBlock class="mr-16" class="search-btn">Search</button>
+<div class="mb-16">
+  <h2>Tên sách</h2>
+  <input type="text" nz-input [(ngModel)]="bookName" />
+</div>
+<button
+  nz-button
+  nzBlock
+  class="mr-16"
+  class="search-btn"
+  (click)="searchAdvance()"
+>
+  Search
+</button>

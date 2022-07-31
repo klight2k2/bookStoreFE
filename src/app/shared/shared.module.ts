@@ -24,7 +24,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
-
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzImageModule } from 'ng-zorro-antd/image';
 const nzZorroModule = [
   NzButtonModule,
   NzMenuModule,
@@ -42,7 +43,9 @@ const nzZorroModule = [
   NzPopoverModule,
   NzSpinModule,
   NzToolTipModule,
-  NzNotificationModule
+  NzNotificationModule,
+  NzSelectModule,
+  NzImageModule
 ];
 
 

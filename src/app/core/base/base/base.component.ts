@@ -41,7 +41,7 @@ export  class BaseComponent implements OnInit,OnDestroy {
 
   protected postDestroy():void{}
 
-  protected subcribeOnce<T>(observable:Observable<T>,callback:Function):void{
+  protected subscribeOnce<T>(observable:Observable<T>,callback:Function):void{
     observable.pipe(take(1)).subscribe((data:any)=>callback(data));
   }
 
@@ -52,5 +52,8 @@ export  class BaseComponent implements OnInit,OnDestroy {
       callback(data)
     });
 
+  }
+  public getLink(data:string){
+    return 'http://localhost:3000/images/books/'+data;
   }
 }

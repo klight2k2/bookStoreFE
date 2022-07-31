@@ -9,6 +9,8 @@ export class CommonService {
   public loginPage$=new BehaviorSubject<boolean>(false);
   public cartDetail$=new BehaviorSubject<any>('');
   public logined$=new BehaviorSubject<boolean>(false);
+  public listCart$=new BehaviorSubject<any>('');
+  public orders$=new BehaviorSubject<any>('');
   public user$=new BehaviorSubject<any>('');
 
   constructor(
@@ -26,6 +28,12 @@ export class CommonService {
 
   public setLogined(state:boolean){
       this.logined$.next(state);
+  }
+  public setListCart(data:any){
+      this.listCart$.next(data);
+  }
+  public setOrders(data:any){
+      this.orders$.next(data);
   }
   public setUser(data:any){
       this.user$.next(data);

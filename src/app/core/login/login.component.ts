@@ -61,7 +61,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this._router.navigate(['/home'])
   }
   public login(){
-    this.subcribeOnce<any>(
+    this.subscribeOnce<any>(
     this.auth.login(this.loginForm.value),
       (res:any)=>{
         this.common.setUser(res.user);
@@ -73,7 +73,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     )
   }
   public register(){
-    this.subcribeOnce<any>(
+    this.subscribeOnce<any>(
     this.auth.register(this.registerForm.value),
       (res:any)=>{
         this._router.navigate(['/login'])

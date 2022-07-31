@@ -29,7 +29,11 @@
     <div nz-row nzAlign="middle" class="full-height">
       <div nz-col [nzSpan]="12">
         <ul nz-menu nzMode="horizontal">
-          <li nz-menu-item nzSelected (click)="navigate('home')">
+          <li
+            nz-menu-item
+            [nzSelected]="navigateList.home"
+            (click)="navigate('home')"
+          >
             <i nz-icon nzType="home"></i>
             Home
           </li>
@@ -37,7 +41,8 @@
             nz-menu-item
             nz-button
             nz-dropdown
-            (click)="navigate('list')"
+            [nzSelected]="navigateList.category"
+            (click)="getAll()"
             [nzDropdownMenu]="menu"
             [nzPlacement]="'bottomLeft'"
           >
@@ -45,7 +50,7 @@
             Category
             <nz-dropdown-menu #menu="nzDropdownMenu">
               <ul nz-menu *ngFor="let category of categories">
-                <li nz-menu-item>{{ category }}</li>
+                <li nz-menu-item>{{ category.name }}</li>
               </ul>
             </nz-dropdown-menu>
           </li>
@@ -63,6 +68,7 @@
               nz-input
               placeholder="Nhập tên quyển sách bạn muốn tìm kiếm..."
               class="full-height"
+              [(ngModel)]="bookTitle"
             />
           </nz-input-group>
         </div>
@@ -88,7 +94,7 @@
 </div>
 
 <ng-template #suffixIconButton>
-  <button nzSearch class="full-height search-btn">
+  <button nzSearch class="full-height search-btn" (click)="searchByTitle()">
     <i nz-icon nzType="search"></i>
   </button>
 </ng-template>
