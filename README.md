@@ -1,6 +1,8 @@
 # BookStoreFE
-b1: npm install -g @angular/cli
+b1: npm install -g @angular/cli \n
+
 b2: mở powershell với quyền admin chạy câu lệnh Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
 b3: mở thư mục chứa code, chạy lệnh npm i
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
