@@ -22,5 +22,21 @@ export class UserService {
     )
 
   }
+  public getPurchase(): Observable<any> {
+    return this.http.get(
+      AUTH_API + 'purchase',
+      httpOptions
+    )
+
+  }
+  public cancelOrder(order_id:number): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'cancel',
+      {order_id:order_id}
+      ,
+      httpOptions
+    )
+
+  }
 
 }

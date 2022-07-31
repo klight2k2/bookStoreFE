@@ -1,0 +1,27 @@
+<nz-table #basicTable [nzData]="dataSet">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Tên</th>
+      <th>Số điện thoại</th>
+
+      <th>Địa chỉ</th>
+      <th>Email</th>
+      <th>Email</th>
+      <th>Giới tính</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ data.fullname }}</td>
+      <td>{{ data.phone_number }}</td>
+
+      <td>{{ data?.address }}</td>
+      <td>{{ data.DOB | date }}</td>
+      <td>
+        {{ data.sex }}
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

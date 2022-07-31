@@ -1,7 +1,7 @@
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './shared/authGuard/auth.guard';
+import { AuthGuard } from './shared/auth/auth.guard'
 
 const routes: Routes = [
   {
@@ -15,9 +15,10 @@ const routes: Routes = [
   { path: 'detail', component:MainLayoutComponent ,loadChildren: () => import('./core/cart-detail/cart-detail.module').then(m => m.CartDetailModule) },
   { path: 'login' , loadChildren: () => import('./core/login/login.module').then(m => m.LoginModule) },
   { path: 'admin', loadChildren: () => import('./core/admin/admin.module').then(m => m.AdminModule) },
-  { path: 'mainLayout', canActivate:[AuthGuard],loadChildren: () => import('./shared/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
-  { path: 'orders', component:MainLayoutComponent , canActivate:[AuthGuard],loadChildren: () => import('./core/orders/orders.module').then(m => m.OrdersModule) },
+  { path: 'mainLayout', canActivateChild:[AuthGuard],loadChildren: () => import('./shared/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
+  { path: 'orders', component:MainLayoutComponent , canActivateChild:[AuthGuard],loadChildren: () => import('./core/orders/orders.module').then(m => m.OrdersModule) },
   { path: 'purchase', component:MainLayoutComponent ,loadChildren: () => import('./core/purchase/purchase.module').then(m => m.PurchaseModule) },
+  { path: '**', component:MainLayoutComponent  },
 ];
 
 @NgModule({

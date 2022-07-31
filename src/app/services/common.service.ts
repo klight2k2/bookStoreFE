@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { NotificationService } from './notification/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class CommonService {
   public user$=new BehaviorSubject<any>('');
 
   constructor(
+    protected notificationService:NotificationService
   ) { }
 
   public setLoading(state:boolean){

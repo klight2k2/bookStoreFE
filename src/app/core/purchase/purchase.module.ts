@@ -4,6 +4,9 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { PurchaseRoutingModule } from './purchase-routing.module';
 import { PurchaseComponent } from './purchase.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     CommonModule,
     PurchaseRoutingModule,
     NzStepsModule,
-    NzIconModule
+    NzIconModule,
+    NzTableModule,
+    NzDividerModule,
+    NzButtonModule
   ]
 })
 export class PurchaseModule { }

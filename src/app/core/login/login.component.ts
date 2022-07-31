@@ -8,6 +8,7 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { BaseComponent } from 'src/app/core/base/base/base.component';
 import { CommonService } from 'src/app/services/common.service';
 import { LocalStorageService } from './../../services/localStorage/local-storage.service';
+import { NotificationService } from './../../services/notification/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,14 @@ import { LocalStorageService } from './../../services/localStorage/local-storage
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent extends BaseComponent implements OnInit {
-
+  radioValue = 'A';
   public  isLogin$=new BehaviorSubject<boolean>(true);
   public  isRegister$=new BehaviorSubject<boolean>(true);
   constructor(private fb: FormBuilder,
     private _route:ActivatedRoute,
     private _router:  Router,
     private http:HttpClient,
+    private notificationService:NotificationService,
     private auth:AuthService,
     private localStorageService:LocalStorageService,
     private common:CommonService
@@ -35,6 +37,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   public registerForm=this.fb.group({
     email:new FormControl('',[Validators.required]),
     password:new FormControl('',[Validators.required]),
+    sex:new FormControl('male',[Validators.required]),
     fullname:new FormControl('',[Validators.required]),
     dob:new FormControl('',[Validators.required]),
     phone_number:new FormControl('',[Validators.required]),
@@ -73,9 +76,12 @@ export class LoginComponent extends BaseComponent implements OnInit {
     )
   }
   public register(){
+    console.log(this.registerForm.value);
+
     this.subscribeOnce<any>(
     this.auth.register(this.registerForm.value),
       (res:any)=>{
+        if(res.code=200)  this.notificationService.success(res.message);
         this._router.navigate(['/login'])
       }
     )

@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 
-
 @NgModule({
   declarations: [
     LoginComponent
@@ -15,7 +14,7 @@ import { LoginComponent } from './login.component';
     CommonModule,
     LoginRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class LoginModule { }
