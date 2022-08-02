@@ -109,7 +109,9 @@
 
 <ng-template #loginedInfo>
   <ul nz-menu style="background-color: #fff">
-    <li nz-menu-item class="login-menu">Đơn mua</li>
+    <li nz-menu-item class="login-menu" (click)="navigate('/purchase')">
+      Đơn mua
+    </li>
     <li nz-menu-item class="login-menu" (click)="logOut()">Đăng xuất</li>
   </ul>
 </ng-template>

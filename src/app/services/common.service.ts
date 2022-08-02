@@ -1,3 +1,4 @@
+import { NotificationService } from './notification/notification.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -14,6 +15,7 @@ export class CommonService {
   public user$=new BehaviorSubject<any>('');
 
   constructor(
+    private notificationService:NotificationService
   ) { }
 
   public setLoading(state:boolean){
@@ -37,5 +39,9 @@ export class CommonService {
   }
   public setUser(data:any){
       this.user$.next(data);
+  }
+
+  public notifySuccess(data:any){
+    if(data?.code==200) this.notificationService.success(data?.message);
   }
 }

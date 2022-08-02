@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification/notification.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -24,7 +25,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private http:HttpClient,
     private auth:AuthService,
     private localStorageService:LocalStorageService,
-    private common:CommonService
+    private common:CommonService,
+    private notificationService:NotificationService
     ) {super() }
 
   public loginForm=this.fb.group({
@@ -76,11 +78,9 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this.subscribeOnce<any>(
     this.auth.register(this.registerForm.value),
       (res:any)=>{
+        if(res?.code==200) this.notificationService.success(res?.message);
         this._router.navigate(['/login'])
       }
     )
   }
-
-
-
 }
