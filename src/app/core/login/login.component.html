@@ -6,12 +6,22 @@
     <label for="user">Tài khoản</label>
     <input type="text" id="user" nz-input formControlName="email" />
     <div
+      class="red-text"
       *ngIf="
         loginForm.controls['email'].hasError('required') &&
         loginForm.controls['email'].touched
       "
     >
       Is required
+    </div>
+    <div
+      class="red-text"
+      *ngIf="
+        loginForm.controls['email'].hasError('email') &&
+        loginForm.controls['email'].touched
+      "
+    >
+      Invalid email!
     </div>
     <label for="password">Mật khẩu</label>
     <input type="password" id="password" nz-input formControlName="password" />
@@ -40,8 +50,35 @@
     <label for="email">email</label>
 
     <input type="text" id="email" nz-input formControlName="email" />
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['email'].hasError('required') &&
+        registerForm.controls['email'].touched
+      "
+    >
+      Is required
+    </div>
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['email'].hasError('email') &&
+        registerForm.controls['email'].touched
+      "
+    >
+      Invalid email!
+    </div>
     <label for="password">Mật khẩu</label>
     <input type="password" id="password" nz-input formControlName="password" />
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['password'].hasError('required') &&
+        registerForm.controls['password'].touched
+      "
+    >
+      Is required
+    </div>
     <label for="sex">Giới tính</label>
     <div>
       <nz-radio-group formControlName="sex">
@@ -49,13 +86,40 @@
         <label nz-radio nzValue="female">female</label>
       </nz-radio-group>
     </div>
-    <label for="dob">Ngày sinh</label>
-    <input type="date" id="dob" nz-input formControlName="dob" />
+    <div>
+      <label for="dob">Ngày sinh</label>
+      <div>
+        <nz-date-picker
+          nzPlaceHolder="Vui lòng nhập ngày sinh"
+          formControlName="dob"
+          [nzDisabledDate]="disabledDate"
+          style="width: 100%"
+        ></nz-date-picker>
+      </div>
+    </div>
 
     <label for="fullname">Họ và tên</label>
     <input type="text" id="fullname" nz-input formControlName="fullname" />
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['fullname'].hasError('required') &&
+        registerForm.controls['fullname'].touched
+      "
+    >
+      Is required
+    </div>
     <label for="address">Địa chỉ</label>
     <input type="text" id="address" nz-input formControlName="address" />
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['address'].hasError('required') &&
+        registerForm.controls['address'].touched
+      "
+    >
+      Is required
+    </div>
     <label for="phone_number">Số điện thoại</label>
     <input
       type="text"
@@ -63,8 +127,32 @@
       nz-input
       formControlName="phone_number"
     />
-
-    <button nz-button type="submit" class="mt-16" nzBlock (click)="register()">
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['phone_number'].hasError('required') &&
+        registerForm.controls['phone_number'].touched
+      "
+    >
+      Is required
+    </div>
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['phone_number'].hasError('pattern') &&
+        registerForm.controls['phone_number'].touched
+      "
+    >
+      Số điện thoại không đúng
+    </div>
+    <button
+      nz-button
+      type="submit"
+      class="mt-16"
+      nzBlock
+      (click)="register()"
+      [disabled]="registerForm.invalid"
+    >
       Đăng kí
     </button>
     <div class="login-desc mt-16">

@@ -27,6 +27,7 @@ export class ShoppingCartService {
       if(!checkExist) this.shoppingCartData.next([...currentCarts,cart]);
       else this.shoppingCartData.next([...currentCarts]);
       console.log(cart);
+      this.updateCart()
     }else{
 
       this.shoppingCartData.next([cart]);
@@ -50,6 +51,12 @@ export class ShoppingCartService {
   }
 
   public updateCart(){
+    this.localStorageService.set('shopping_cart',this.shoppingCartData.getValue());
+
+  }
+
+  public setCart(data:any){
+   this.shoppingCartData.next(data)
     this.localStorageService.set('shopping_cart',this.shoppingCartData.getValue());
 
   }

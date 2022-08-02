@@ -5,11 +5,11 @@ import { BaseComponent } from 'src/app/core/base/base/base.component';
 import { CommonService } from 'src/app/services/common.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { BookService } from './../../services/book/book.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
@@ -17,6 +17,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   public user:any;
   public bookTitle='';
   public countCart=0;
+  public countCart$=new BehaviorSubject(0);
   public navigateList={
     home:true,
     category:false
@@ -46,6 +47,9 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     this.shoppingCartService.getCountCart()
     this.subscribeUntilDestroy<any>(this.shoppingCartService.shoppingCartData,(data:any)=>{
       this.countCart=data?.length || 0;
+      this.countCart$.next(this.countCart)
+      console.log('conut',data?.length);
+
     })
 
   }
@@ -108,4 +112,13 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
     })
   }
-}
+  searchByCategory(categoryId:number){
+    this.subscribeOnce(this.bookService.searchByCategory(categoryId),(data:any)=>{
+      this.commonService.setListCart(data);
+      this.navigate('list')
+    })
+  }
+  }
+
+
+

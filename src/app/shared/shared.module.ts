@@ -28,6 +28,8 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+
 const nzZorroModule = [
   NzButtonModule,
   NzMenuModule,
@@ -49,7 +51,8 @@ const nzZorroModule = [
   NzSelectModule,
   NzImageModule,
   NzRadioModule,
-  NzEmptyModule
+  NzEmptyModule,
+  NzDatePickerModule
 ];
 
 
@@ -66,7 +69,7 @@ const angularModule=[
     LoadingComponent,
   ],
   imports: [CommonModule,...angularModule, ...nzZorroModule],
-  exports: [
+exports: [
     HeaderComponent,
     FooterComponent,
     CartComponent,

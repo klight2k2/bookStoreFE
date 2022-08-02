@@ -41,8 +41,20 @@ super()
 
   order(){
     const data={...this.orderForm.value,orders:this.orders};
+    const ordersId=this.orders.map((order:any)=>{
+      return order.id
+    })
+    console.log(ordersId);
+
     this.subscribeOnce(this.userService.orders(data),(res:any)=>{
-      console.log(res);
+      if(res.code==200){
+        console.log(res);
+        let carts=this.shoppingCart.shoppingCartData.getValue();
+        carts=carts.filter((cart:any)=> !ordersId.includes(cart.id))
+        this.shoppingCart.setCart(carts);
+        this.commonService.notifySuccess(res);
+        this._router.navigate(['/home'])
+      }
 
     })
 

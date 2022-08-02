@@ -22,6 +22,14 @@ export class BookService {
     )
 
   }
+  public getDetailBook(book_id:number): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'getDetailBook',{book_id:book_id},
+
+      httpOptions
+    )
+
+  }
   public getTrendingBook(): Observable<any> {
     return this.http.get(
       AUTH_API + 'trending',
@@ -32,6 +40,14 @@ export class BookService {
   public getCategories(): Observable<any> {
     return this.http.get(
       AUTH_API + 'categories',
+      httpOptions
+    )
+
+  }
+  public searchByCategory(categoryId:number): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'searchByCategory',
+      {categoryId:categoryId},
       httpOptions
     )
 

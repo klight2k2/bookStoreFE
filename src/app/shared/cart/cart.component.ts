@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shoppingCart/shopping-cart.service';
 import { BaseComponent } from 'src/app/core/base/base/base.component';
+import { BookService } from './../../services/book/book.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,12 +12,15 @@ import { BaseComponent } from 'src/app/core/base/base/base.component';
 })
 export class CartComponent extends BaseComponent implements OnInit {
   @Input() data:any;
+  public cart:any;
   constructor(
     private shoppingCartService:ShoppingCartService,
     private commonService:CommonService,
     private _router:Router,
+    private bookService:BookService
 
   ) { super()}
+
 
   handleAddCart(cart:any){
     cart.num=1;

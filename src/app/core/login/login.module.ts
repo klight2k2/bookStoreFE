@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
-
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 @NgModule({
   declarations: [
     LoginComponent
@@ -15,6 +15,7 @@ import { LoginComponent } from './login.component';
     LoginRoutingModule,
     SharedModule,
     HttpClientModule,
+    NzDatePickerModule
   ]
 })
 export class LoginModule { }

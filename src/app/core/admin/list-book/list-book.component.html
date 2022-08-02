@@ -1,4 +1,4 @@
-<nz-table #basicTable [nzData]="dataSet">
+<nz-table #basicTable [nzData]="dataSet" class="mt-16 pl-16 pr-16">
   <thead>
     <tr>
       <th>STT</th>
@@ -7,8 +7,7 @@
 
       <th>Đơn giá</th>
       <th>Số lượng</th>
-      <th>Số tiền</th>
-      <th>Xóa</th>
+      <th>Hành động</th>
       <th>
         <!-- <label nz-checkbox [(ngModel)]="checkAll"></label> -->
         <!-- (change)="changeCheckAll()" -->
@@ -22,12 +21,16 @@
       <td><img [src]="getLink(data.image)" alt="" class="cart-image" /></td>
 
       <td>{{ data.price | currency: "VND":true }}</td>
+      <td>{{ data.quantity }}</td>
 
-      <td>{{ data.price * data.num | currency: "VND":true }}</td>
       <td>
-        <button nz-button nzDanger>
+        <button nz-button (click)="createModal(data.id)" nzDanger>
           <i nz-icon nzType="delete" nzTheme="fill"></i>
           Delete
+        </button>
+        <button nz-button class="ml-8">
+          <i nz-icon nzType="edit" nzTheme="fill"></i>
+          Edit
         </button>
       </td>
     </tr>

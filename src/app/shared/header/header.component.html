@@ -8,7 +8,7 @@
       <span></span>
     </div>
     <div nz-col [nzSpan]="3" [nzOffset]="9" class="shopping-cart">
-      <nz-badge [nzCount]="countCart">
+      <div class="badge-container">
         <a
           routerLink="./shopping-cart"
           routerLinkActive="active"
@@ -16,7 +16,10 @@
         >
           <img src="assets/icon/card.webp" alt="" class="card-logo" />
         </a>
-      </nz-badge>
+        <div class="badge">
+          {{ countCart }}
+        </div>
+      </div>
       <!-- <div class="shopping-desc">
         <h2 class="shopping-heading">Shopping-card</h2>
         <p class="shopping-count">item - 0</p>
@@ -50,7 +53,9 @@
             Category
             <nz-dropdown-menu #menu="nzDropdownMenu">
               <ul nz-menu *ngFor="let category of categories">
-                <li nz-menu-item>{{ category.name }}</li>
+                <li nz-menu-item (click)="searchByCategory(category?.id)">
+                  {{ category.name }}
+                </li>
               </ul>
             </nz-dropdown-menu>
           </li>

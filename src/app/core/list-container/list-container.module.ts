@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { ListContainerRoutingModule } from './list-container-routing.module';
 import { ListContainerComponent } from './list-container.component';
 import { ListCartComponent } from './list-cart/list-cart.component';
@@ -20,7 +20,8 @@ import{SharedModule} from '../../shared/shared.module'
   imports: [
     CommonModule,
     ListContainerRoutingModule,
-    SharedModule
+    SharedModule,
+    NzPaginationModule
   ]
 })
 export class ListContainerModule { }

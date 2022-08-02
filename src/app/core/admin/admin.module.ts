@@ -6,12 +6,10 @@ import { AdminComponent } from './admin.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NzLayoutModule} from 'ng-zorro-antd/layout'
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { ListbookComponent } from './listbook/listbook.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
-    ListbookComponent
   ],
   imports: [
   CommonModule,
