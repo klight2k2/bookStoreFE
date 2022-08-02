@@ -7,7 +7,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-
+import { NzEmptyModule } from 'ng-zorro-antd/empty'
 @NgModule({
   declarations: [
     PurchaseComponent
@@ -19,7 +19,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzIconModule,
     NzTableModule,
     NzDividerModule,
-    NzButtonModule
+    NzButtonModule,
+    NzEmptyModule,
   ]
 })
 export class PurchaseModule { }

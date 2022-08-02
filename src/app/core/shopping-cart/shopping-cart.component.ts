@@ -65,9 +65,15 @@ export class ShoppingCartComponent extends BaseComponent implements OnInit {
     console.log(orders);
     this.subscribeUntilDestroy(
       this.commonService.logined$,(status:boolean)=>{
-        if(status && orders?.length >0){
+        if(status ){
+          if( orders?.length >0){
             this.commonService.setOrders(orders);
             this._router.navigate(['/orders']);
+          }
+          else{
+
+            this.notification.info("Hãy chọn các quyển sách bạn muốn đặt!")
+          }
 
         }else{
           this.notification.info("Please login to order!")

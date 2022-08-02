@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FooterComponent } from './footer/footer.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -47,7 +48,8 @@ const nzZorroModule = [
   NzNotificationModule,
   NzSelectModule,
   NzImageModule,
-  NzRadioModule
+  NzRadioModule,
+  NzEmptyModule
 ];
 
 
