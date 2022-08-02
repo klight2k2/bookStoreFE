@@ -118,6 +118,11 @@ export class HeaderComponent extends BaseComponent implements OnInit {
       this.navigate('list')
     })
   }
+  randomAvt(){
+    const randomAvt=Math.floor(Math.random()*6+1);
+    return `assets/avt/${randomAvt}.jpg`
+  }
+
   }
 
 

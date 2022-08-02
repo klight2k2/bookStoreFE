@@ -27,7 +27,6 @@ export class ShoppingCartService {
       if(!checkExist) this.shoppingCartData.next([...currentCarts,cart]);
       else this.shoppingCartData.next([...currentCarts]);
       console.log(cart);
-      this.updateCart()
     }else{
 
       this.shoppingCartData.next([cart]);

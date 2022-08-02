@@ -87,7 +87,7 @@
           [nzPopoverContent]="loginedInfo"
           nzPopoverPlacement="bottom"
         >
-          <img src="assets/avt/2.jpg" alt="" class="user-avt" />
+          <img [src]="randomAvt()" alt="" class="user-avt" />
           <h2 class="user-name ml-8">
             {{ user?.name }}
           </h2>
