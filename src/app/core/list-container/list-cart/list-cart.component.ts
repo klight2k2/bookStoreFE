@@ -16,6 +16,10 @@ export class ListCartComponent extends BaseComponent implements OnInit {
    override preInit(): void {
        this.subscribeUntilDestroy(this.commonService.listCart$,(listCart:any)=>{
         this.listCart=listCart;
+        setTimeout(()=>{
+          this.commonService.setLoading(false)
+
+        },200)
        })
    }
 

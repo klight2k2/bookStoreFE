@@ -1,0 +1,36 @@
+<nz-table #basicTable [nzData]="dataSet">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Sản phẩm</th>
+      <th></th>
+
+      <th>Đơn giá</th>
+      <th>Số lượng</th>
+      <th>Số tiền</th>
+      <th>Xóa</th>
+      <th>
+        <!-- <label nz-checkbox [(ngModel)]="checkAll"></label> -->
+        <!-- (change)="changeCheckAll()" -->
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ data.title }}</td>
+      <td><img [src]="getLink(data.image)" alt="" class="cart-image" /></td>
+
+      <td>{{ data.price | currency: "VND":true }}</td>
+
+      <td>{{ data.price * data.num | currency: "VND":true }}</td>
+      <td>
+        <button nz-button nzDanger>
+          <i nz-icon nzType="delete" nzTheme="fill"></i>
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+dfs

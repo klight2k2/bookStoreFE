@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
@@ -45,7 +46,8 @@ const nzZorroModule = [
   NzToolTipModule,
   NzNotificationModule,
   NzSelectModule,
-  NzImageModule
+  NzImageModule,
+  NzRadioModule
 ];
 
 

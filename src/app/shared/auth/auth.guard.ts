@@ -1,15 +1,15 @@
-import { LocalStorageService } from './../../services/localStorage/local-storage.service';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from 'src/app/services/localStorage/local-storage.service'
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivateChild {
   constructor(private localStorageService:LocalStorageService){}
-  canActivate(
-    route: ActivatedRouteSnapshot,
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const token=this.localStorageService.getToken();
       if(!!token){
@@ -17,5 +17,6 @@ export class AuthGuard implements CanActivate {
       }
       return false
   }
+
 
 }

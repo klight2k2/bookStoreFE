@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-list-container',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private commonService:CommonService
+  ) { }
 
   ngOnInit(): void {
+    this.commonService.setLoading(true)
   }
 
 }

@@ -6,7 +6,8 @@ import { AdminComponent } from './admin.component';
 const routes: Routes = [{
   path:'login',component:LoginComponent
 },
-  { path: '', component: AdminComponent }];
+  { path: '', component: AdminComponent },
+  { path: 'user' , component: AdminComponent,loadChildren: () => import('./user/user.module').then(m => m.UserModule) }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

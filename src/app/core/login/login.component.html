@@ -42,7 +42,13 @@
     <input type="text" id="email" nz-input formControlName="email" />
     <label for="password">Mật khẩu</label>
     <input type="password" id="password" nz-input formControlName="password" />
-
+    <label for="sex">Giới tính</label>
+    <div>
+      <nz-radio-group formControlName="sex">
+        <label nz-radio nzValue="male">male</label>
+        <label nz-radio nzValue="female">female</label>
+      </nz-radio-group>
+    </div>
     <label for="dob">Ngày sinh</label>
     <input type="date" id="dob" nz-input formControlName="dob" />
 
