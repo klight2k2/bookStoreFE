@@ -15,7 +15,9 @@ const routes: Routes = [{
   { path: 'user/userDetail', component: AdminComponent, loadChildren: () => import('./user/user-detail/user-detail.module').then(m => m.UserDetailModule) },
   { path: 'user/addUser',component: AdminComponent, loadChildren: () => import('./user/add-user/add-user.module').then(m => m.AddUserModule) },
   { path: 'listBook',component: AdminComponent, loadChildren: () => import('./list-book/list-book.module').then(m => m.ListBookModule) },
-  { path: 'addBook',component: AdminComponent, loadChildren: () => import('./list-book/add-book/add-book.module').then(m => m.AddBookModule) }
+  { path: 'addBook',component: AdminComponent, loadChildren: () => import('./list-book/add-book/add-book.module').then(m => m.AddBookModule) },
+  { path: 'manageOrders',component: AdminComponent, loadChildren: () => import('./manage-orders/manage-orders.module').then(m => m.ManageOrdersModule) },
+  { path: '**',redirectTo:'/admin/user', pathMatch:'full' }
 ];
 
 @NgModule({

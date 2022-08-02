@@ -23,6 +23,7 @@ export class UserComponent extends BaseComponent implements OnInit {
       this.subscribeOnce(this.adminService.getUsers(),(data:any)=>{
         console.log(data);
         this.dataSet=data;
+        this.commonService.setLoading(false)
       })
   }
 

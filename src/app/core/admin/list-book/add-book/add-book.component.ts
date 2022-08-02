@@ -92,7 +92,8 @@ export class AddBookComponent extends BaseComponent implements OnInit {
 
   saveUser(){
     console.log(this.bookForm.value);
-    this.subscribeOnce( this.adminService.addBook(this.bookForm.value),(res:any)=>{
+    const selectedCategoriesId=this.categories.filter((category:any)=>category.check===true).map((category:any)=>category.id)
+    this.subscribeOnce( this.adminService.addBook(this.bookForm.value,this.selectedAuthor, selectedCategoriesId ),(res:any)=>{
       this.commonService.notifySuccess(res)
       if(res.code=200) this.navigate('/admin')
     })

@@ -13,6 +13,7 @@
           alt=""
           class="sidebar-logo"
           *ngIf="!isCollapsed"
+          (click)="navigate('home')"
         />
         <button
           nz-button
@@ -37,7 +38,7 @@
       </li>
       <li nz-menu-item nz-tooltip nzTooltipPlacement="right">
         <i nz-icon nzType="setting"></i>
-        <span (click)="navigate('admin/listBook')">Quản lý đơn hàng</span>
+        <span (click)="navigate('admin/manageOrders')">Quản lý đơn hàng</span>
       </li>
     </ul>
   </nz-sider>
@@ -65,9 +66,12 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
+
 <ng-template #popover>
-  <div>
-    <p>Tài khoản</p>
-    <p>Đăng xuất</p>
-  </div>
+  <ul nz-menu style="background-color: #fff">
+    <li nz-menu-item class="login-menu" (click)="navigate('/purchase')">
+      Đơn mua
+    </li>
+    <li nz-menu-item class="login-menu" (click)="logOut()">Đăng xuất</li>
+  </ul>
 </ng-template>

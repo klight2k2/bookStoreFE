@@ -1,0 +1,94 @@
+<div class="manage-orders">
+  <h1>Các đơn hàng</h1>
+  <div nz-row *ngFor="let dataSet of orders" class="full-width">
+    <nz-divider
+      [nzText]="getOrderId(dataSet.order_id)"
+      nzOrientation="left"
+      class="full-width"
+    ></nz-divider>
+    <div *ngIf="showCancelBtn(dataSet.status)" class="full-width">
+      <button
+        nz-button
+        class="mb-16 btn-cancel"
+        (click)="cancelOrder(dataSet.order_id)"
+        nz-danger
+      >
+        Hủy đơn hàng
+      </button>
+      <div class="mt-16 mb-8">
+        <label for="">
+          <h3>Thay đổi trạng thái đơn hàng:</h3>
+        </label>
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Change status of order"
+          style="width: 200px"
+          [(ngModel)]="selectedState"
+        >
+          <ng-container *ngFor="let orderState of orderStates">
+            <nz-option
+              [nzLabel]="orderState.label"
+              [nzValue]="orderState.value"
+            ></nz-option>
+          </ng-container>
+        </nz-select>
+        <button
+          nz-button
+          class="ml-16"
+          (click)="updateStatus(dataSet.order_id)"
+          nz-danger
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+    <div class="full-width">
+      <h2>Email:{{ dataSet.email }}</h2>
+    </div>
+    <div nz-col [nzSpan]="24">
+      <h3 class="full-width">Trạng thái đơn hàng</h3>
+      <nz-steps [nzCurrent]="getStatus(dataSet.status)">
+        <nz-step nzTitle="Đặt hàng thành công" nzIcon="check-circle"></nz-step>
+        <nz-step nzTitle="Đang giao hàng" nzIcon="solution"></nz-step>
+        <nz-step nzTitle="Done" nzIcon="shopping"></nz-step>
+        <nz-step nzTitle="Đã hủy" nzIcon="smile"></nz-step>
+        <ng-template #iconTemplate><i nz-icon nzType="smile"></i></ng-template>
+      </nz-steps>
+    </div>
+    <div nz-col [nzSpan]="24" class="mt-16">
+      <h3>Sản phẩm</h3>
+      <nz-table #basicTable [nzData]="dataSet.ordersDetail">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Sản phẩm</th>
+            <th></th>
+
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Số tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ data.title }}</td>
+            <td>
+              <img [src]="getLink(data.image)" alt="" class="cart-image" />
+            </td>
+
+            <td>{{ data.price | currency: "VND":true }}</td>
+            <td>
+              {{ data.num }}
+            </td>
+            <td>{{ data.price * data.num | currency: "VND":true }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+  <div *ngIf="!orders" class="mt-32 mb-32">
+    <nz-empty></nz-empty>
+  </div>
+</div>

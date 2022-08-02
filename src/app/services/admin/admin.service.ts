@@ -10,7 +10,6 @@ const httpOptions = {
   }),
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -22,24 +21,55 @@ export class AdminService {
     this.userDetail$.next(data);
 }
 
-  public addBook(book:any): Observable<any> {
+
+
+  public addBook(book:any,authorId:number,selectedCategoriesId:any): Observable<any> {
     const formdata = new FormData();
-    formdata.append('title', book.title);
     formdata.append('description', book.description);
+    formdata.append('title', book.title);
     formdata.append('price', book.price);
     formdata.append('quantity', book.quantity);
     formdata.append('pages', book.pages);
     formdata.append('publisher', book.publisher);
     formdata.append('image', book.image);
+    formdata.append('author_id', String(authorId));
+    formdata.append('category_id', selectedCategoriesId);
+    console.log(book.image,"ha");
+    console.log(formdata);
+
     return this.http.post(
-      AUTH_API + 'addBook',formdata,
+      AUTH_API + 'addBook',formdata
+    )
+
+  }
+
+  public getUsers(): Observable<any> {
+    return this.http.get(
+      AUTH_API + 'getUsers',
       httpOptions
     )
 
   }
-  public getUsers(): Observable<any> {
+  public cancelOrder(order_id:number): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'cancelOrder',{order_id:order_id},
+      httpOptions
+    );
+
+  }
+  public updateStatus(data:any): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'updateStatus',data,
+      httpOptions
+    );
+
+  }
+
+
+
+  public getOrders(): Observable<any> {
     return this.http.get(
-      AUTH_API + 'getUsers',
+      AUTH_API + 'getOrders',
       httpOptions
     )
 

@@ -24,7 +24,10 @@ export class ListBookComponent extends BaseComponent implements OnInit {
    }
   override preInit(){
     this.subscribeUntilDestroy(this.adminService.getAll(),(data:any)=>{
-      this.dataSet=data
+      this.dataSet=data;
+  console.log(data);
+
+      this.commonService.setLoading(false)
     })
   }
 
