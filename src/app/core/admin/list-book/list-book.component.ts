@@ -25,7 +25,6 @@ export class ListBookComponent extends BaseComponent implements OnInit {
   override preInit(){
     this.subscribeUntilDestroy(this.adminService.getAll(),(data:any)=>{
       this.dataSet=data;
-  console.log(data);
 
       this.commonService.setLoading(false)
     })
@@ -46,7 +45,6 @@ export class ListBookComponent extends BaseComponent implements OnInit {
     this.subscribeOnce(this.adminService.deleteBook(book_id),(res:any)=>{
       this.commonService.notifySuccess(res)
       this.subscribeOnce(this.adminService.getAll(),(data:any)=>{
-        console.log(data);
         this.dataSet=data;
       })
     })

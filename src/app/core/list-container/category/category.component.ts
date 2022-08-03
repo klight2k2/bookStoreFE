@@ -29,14 +29,14 @@ export class CategoryComponent extends BaseComponent implements OnInit,OnDestroy
         this.categories  =categories.map((category:any)=>{
           return {...category,check:false}
         });
-        console.log(categories);
+        // console.log(categories);
 
       })
       this.subscribeUntilDestroy(this.bookService.getPublishers(),(publishers:any)=>{
         this.publishers  =publishers.map((publisher:any)=>{
           return {...publisher,check:false}
         });
-        console.log(publishers);
+        // console.log(publishers);
 
       })
   }

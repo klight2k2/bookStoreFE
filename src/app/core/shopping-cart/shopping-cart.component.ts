@@ -62,7 +62,7 @@ export class ShoppingCartComponent extends BaseComponent implements OnInit {
 
   public order(){
     const orders=this.dataSet.filter((item:any)=>item.check)
-    console.log(orders);
+    // console.log(orders);
     this.subscribeUntilDestroy(
       this.commonService.logined$,(status:boolean)=>{
         if(status ){

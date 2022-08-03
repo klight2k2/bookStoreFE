@@ -43,5 +43,6 @@ export class CommonService {
 
   public notifySuccess(data:any){
     if(data?.code==200) this.notificationService.success(data?.message);
+    else this.notificationService.error(data?.message)
   }
 }

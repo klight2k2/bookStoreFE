@@ -17,9 +17,9 @@ export class OrdersComponent extends BaseComponent implements OnInit {
   public total=0;
   public orderForm=this.fb.group({
 
-    phone_number:new FormControl('',[Validators.required]),
+    phone_number:new FormControl('',[Validators.required,Validators.pattern(new RegExp("[0-9 ]{10}"))]),
     address:new FormControl('',[Validators.required]),
-    note:new FormControl('',[Validators.required]),
+    note:new FormControl(''),
   })
   constructor( private shoppingCart:ShoppingCartService,
     private commonService:CommonService,
@@ -44,7 +44,7 @@ super()
     const ordersId=this.orders.map((order:any)=>{
       return order.id
     })
-    console.log(ordersId);
+    // console.log(ordersId);
 
     this.subscribeOnce(this.userService.orders(data),(res:any)=>{
       if(res.code==200){

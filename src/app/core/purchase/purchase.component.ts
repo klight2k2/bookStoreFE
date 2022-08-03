@@ -39,10 +39,10 @@ export class PurchaseComponent extends BaseComponent implements OnInit {
     return `Mã đơn hàng: ${order_id}`;
   }
   showCancelBtn(status:string){
-    console.log(status);
+    // console.log(status);
 
     console.log(statusOrder.indexOf(status));
-    return statusOrder.indexOf(status)!=3;
+    return statusOrder.indexOf(status)==0 ||statusOrder.indexOf(status)==1  ;
   }
   cancelOrder(order_id:number){
     this.commonService.setLoading(true);

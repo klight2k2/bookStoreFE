@@ -41,14 +41,13 @@ export class AddBookComponent extends BaseComponent implements OnInit {
       this.categories  =categories.map((category:any)=>{
         return {...category,check:false}
       });
-      console.log(categories);
 
     })
     this.subscribeUntilDestroy(this.bookService.getPublishers(),(publishers:any)=>{
       this.publishers  =publishers.map((publisher:any)=>{
         return {...publisher,check:false}
       });
-      console.log(publishers);
+      // console.log(publishers);
 
     })
     this.subscribeUntilDestroy(this.adminService.getAuthors(),(authors:any)=>{
@@ -82,7 +81,6 @@ export class AddBookComponent extends BaseComponent implements OnInit {
         this.imageData = reader.result as string;
       };
       reader.readAsDataURL(file);
-      console.log(file);
     }
   }
   disabledDate = (current: Date): boolean =>
@@ -91,7 +89,6 @@ export class AddBookComponent extends BaseComponent implements OnInit {
 
 
   saveUser(){
-    console.log(this.bookForm.value);
     const selectedCategoriesId=this.categories.filter((category:any)=>category.check===true).map((category:any)=>category.id)
     this.subscribeOnce( this.adminService.addBook(this.bookForm.value,this.selectedAuthor, selectedCategoriesId ),(res:any)=>{
       this.commonService.notifySuccess(res)

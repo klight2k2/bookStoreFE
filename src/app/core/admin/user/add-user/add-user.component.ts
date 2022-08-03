@@ -50,7 +50,7 @@ export class AddUserComponent extends BaseComponent implements OnInit {
 
 
   saveUser(){
-    console.log(this.userForm.value);
+    // console.log(this.userForm.value);
     this.subscribeOnce( this.adminService.createUser(this.userForm.value),(res:any)=>{
       this.commonService.notifySuccess(res)
       if(res.code=200) this.navigate('/admin')

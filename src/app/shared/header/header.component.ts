@@ -36,7 +36,6 @@ export class HeaderComponent extends BaseComponent implements OnInit {
       this.categories  =categories.map((category:any)=>{
         return {...category,check:false}
       });
-      console.log(categories);
 
     })
     this.subscribeUntilDestroy(this.commonService.user$,(data:any)=>{
@@ -48,7 +47,6 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     this.subscribeUntilDestroy<any>(this.shoppingCartService.shoppingCartData,(data:any)=>{
       this.countCart=data?.length || 0;
       this.countCart$.next(this.countCart)
-      console.log('conut',data?.length);
 
     })
 
@@ -68,7 +66,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
   }
   navigate(navigateAdress:string,isLoginPage=false,isRegister=false){
-    console.log(this._router.url);
+    // console.log(this._router.url);
     if(navigateAdress=='/home') {
       this.navigateList.home=true;
       this.navigateList.category=false;
@@ -108,7 +106,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     this.subscribeOnce(this.bookService.getAll(), (listCart:any)=>{
       this.navigate('list')
       this.commonService.setListCart(listCart)
-      console.log("click");
+      // console.log("click");
 
     })
   }
@@ -119,7 +117,8 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     })
   }
   randomAvt(){
-    const randomAvt=Math.floor(Math.random()*6+1);
+    // const randomAvt=Math.floor(Math.random()*6+1);
+    const randomAvt=2;
     return `assets/avt/${randomAvt}.jpg`
   }
 

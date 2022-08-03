@@ -34,7 +34,7 @@ export class AdminService {
     formdata.append('image', book.image);
     formdata.append('author_id', String(authorId));
     formdata.append('category_id', selectedCategoriesId);
-    console.log(book.image,"ha");
+    // console.log(book.image,"ha");
     console.log(formdata);
 
     return this.http.post(

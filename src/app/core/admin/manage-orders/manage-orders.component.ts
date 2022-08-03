@@ -46,7 +46,7 @@ export class ManageOrdersComponent extends BaseComponent implements OnInit {
   override preInit(){
     this.commonService.setLoading(false)
     this.subscribeOnce(this.adminService.getOrders(),(data:any)=>{
-      console.log(data);
+      // console.log(data);
 
 
       this.orders=data;
@@ -68,7 +68,7 @@ export class ManageOrdersComponent extends BaseComponent implements OnInit {
     this.subscribeOnce(this.adminService.deleteBook(book_id),(res:any)=>{
       this.commonService.notifySuccess(res)
       this.subscribeOnce(this.adminService.getAll(),(data:any)=>{
-        console.log(data);
+        // console.log(data);
         this.dataSet=data;
       })
     })
@@ -86,7 +86,10 @@ export class ManageOrdersComponent extends BaseComponent implements OnInit {
     return `Mã đơn hàng: ${order_id}`;
   }
   showCancelBtn(status:string){
-    return statusOrder.indexOf(status)!=3;
+    // console.log(status);
+
+    // console.log(statusOrder.indexOf(status));
+    return statusOrder.indexOf(status)==0 ||statusOrder.indexOf(status)==1  ;
   }
   cancelOrder(order_id:number){
     this.commonService.setLoading(true);
@@ -104,7 +107,7 @@ export class ManageOrdersComponent extends BaseComponent implements OnInit {
   }
   updateStatus(order_id:number){
     this.commonService.setLoading(true);
-    console.log({order_id:order_id,status:this.selectedState});
+    // console.log({order_id:order_id,status:this.selectedState});
 
     this.subscribeOnce(this.adminService.updateStatus({order_id:order_id,status:this.selectedState}),(res:any)=>{
       this.commonService.notifySuccess(res);

@@ -11,6 +11,15 @@
         formControlName="address"
       />
     </div>
+    <div
+      class="red-text"
+      *ngIf="
+        orderForm.controls['address'].hasError('required') &&
+        orderForm.controls['address'].touched
+      "
+    >
+      Is required
+    </div>
     <div class="mb-16">
       <h3>Số điện thoại nhận hàng</h3>
       <input
@@ -20,6 +29,24 @@
         nz-input
         formControlName="phone_number"
       />
+    </div>
+    <div
+      class="red-text"
+      *ngIf="
+        orderForm.controls['phone_number'].hasError('required') &&
+        orderForm.controls['phone_number'].touched
+      "
+    >
+      Is required
+    </div>
+    <div
+      class="red-text"
+      *ngIf="
+        orderForm.controls['phone_number'].hasError('pattern') &&
+        orderForm.controls['phone_number'].touched
+      "
+    >
+      Invalid phone number
     </div>
     <div class="mb-16">
       <h3>Lưu ý</h3>
@@ -68,6 +95,8 @@
     Tổng tiền:{{ total | currency: "VND":true }}
   </div>
   <div class="d-flex align-center justify-flex-end mb-16 mr-16">
-    <button nz-button class="" (click)="order()">Đặt hàng</button>
+    <button nz-button class="" (click)="order()" [disabled]="orderForm.invalid">
+      Thanh toán
+    </button>
   </div>
 </div>

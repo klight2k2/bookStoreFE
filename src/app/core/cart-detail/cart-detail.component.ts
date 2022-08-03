@@ -24,7 +24,7 @@ export class CartDetailComponent extends BaseComponent implements OnInit {
     })
     this.subscribeOnce(this.bookService.getDetailBook(this.dataSet.id),(data:any)=>{
       this.dataSet=data;
-      console.log(data);
+      // console.log(data);
 
     })
   }

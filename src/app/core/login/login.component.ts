@@ -75,11 +75,17 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this.subscribeOnce<any>(
     this.auth.login(this.loginForm.value),
       (res:any)=>{
-        this.common.setUser(res.user);
-        this.localStorageService.setToken(res.token);
-        this.localStorageService.set('user',res.user);
-        this.common.setLogined(true)
-        this._router.navigate(['/home'])
+        this.common.notifySuccess(res);
+        if(res.code=200){
+          // console.log(res);
+          this.common.setUser(res.user);
+
+          this.localStorageService.setToken(res.token);
+          this.localStorageService.set('user',res.user);
+          this.common.setLogined(true)
+          this._router.navigate(['/home'])
+
+        }
       }
     )
   }

@@ -40,8 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handleHttpResponse(requestError:HttpErrorResponse):void{
-      console.log(requestError)
-        this.displayToastMessage(requestError.error)
+        this.displayToastMessage(requestError.error.message)
 
 
   }

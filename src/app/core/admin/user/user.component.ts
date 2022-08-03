@@ -21,7 +21,7 @@ export class UserComponent extends BaseComponent implements OnInit {
 
   override  preInit(): void {
       this.subscribeOnce(this.adminService.getUsers(),(data:any)=>{
-        console.log(data);
+        // console.log(data);
         this.dataSet=data;
         this.commonService.setLoading(false)
       })
