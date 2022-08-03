@@ -44,12 +44,12 @@ export class ManageOrdersComponent extends BaseComponent implements OnInit {
     super();
    }
   override preInit(){
-    this.commonService.setLoading(false)
     this.subscribeOnce(this.adminService.getOrders(),(data:any)=>{
       // console.log(data);
 
 
       this.orders=data;
+      this.commonService.setLoading(false)
   })
   }
 

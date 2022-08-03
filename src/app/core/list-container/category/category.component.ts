@@ -46,7 +46,11 @@ export class CategoryComponent extends BaseComponent implements OnInit,OnDestroy
     console.log({bookName:this.bookName,maxPrice:this.maxPrice,minPrice:this.minPrice,selectedPublisherId:this.selectedPublisherId,selectedCategoriesId});
     const data={bookName:this.bookName,authorName:this.authorName,maxPrice:this.maxPrice,minPrice:this.minPrice,selectedPublisherId:this.selectedPublisherId,selectedCategoriesId}
     this.subscribeUntilDestroy(this.bookService.searchAdvance(data),(listCart:any)=>{
-      this.commonService.setListCart(listCart)
+      if(!Array.isArray(listCart)){
+        this.commonService.setListCart([]);
+        this.commonService.notifySuccess(listCart)
+      }
+      else this.commonService.setListCart(listCart)
     })
   }
 }

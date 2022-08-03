@@ -27,7 +27,7 @@ export class AddBookComponent extends BaseComponent implements OnInit {
               private adminService:AdminService,
               private commonService:CommonService,
               private _router:Router,
-              private bookService:BookService
+              private bookService:BookService,
     ) {
   super()
 

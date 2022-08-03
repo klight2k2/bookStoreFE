@@ -1,5 +1,5 @@
 <div class="ca">
-  <div class="mt-32" nz-row>
+  <div class="mt-32" nz-row *ngIf="!!listCart">
     <ng-container *ngFor="let data of listCart">
       <app-cart
         nz-col
@@ -8,5 +8,8 @@
         [data]="data"
       ></app-cart>
     </ng-container>
+  </div>
+  <div class="empty">
+    <nz-empty *ngIf="listCart?.length === 0"></nz-empty>
   </div>
 </div>

@@ -27,6 +27,7 @@ export class UserDetailComponent extends BaseComponent  implements OnInit {
 
   override preInit(){
     this.subscribeUntilDestroy(this.adminService.userDetail$,(data:any)=>{
+console.log(data);
 
       this.userForm=this.fb.group({
         email:new FormControl(data.email,[Validators.required,Validators.email]),
@@ -37,7 +38,7 @@ export class UserDetailComponent extends BaseComponent  implements OnInit {
         phone_number:new FormControl(data.phone_number,[Validators.required,Validators.pattern(new RegExp("[0-9 ]{10}"))]),
         address:new FormControl(data.address,[Validators.required]),
         role_id:new FormControl(data.role_id,[Validators.required]),
-        id:new FormControl(data.role_id),
+        id:new FormControl(data.id),
       })
     })
 
@@ -53,6 +54,7 @@ export class UserDetailComponent extends BaseComponent  implements OnInit {
   }
   saveUser(){
     // console.log(this.userForm.value);
+
     this.subscribeOnce( this.adminService.updateUser(this.userForm.value),(res:any)=>{
       this.commonService.notifySuccess(res)
       if(res.code=200) this.navigate('/admin')

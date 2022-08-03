@@ -1,6 +1,8 @@
 <div class="pr-16 pl-16">
   <div class="mt-16 mb-16 mr-16">
     <button nz-button (click)="navigate('/admin/user/addUser')">
+      <i nz-icon nzType="plus-circle" nzTheme="fill"></i>
+
       Thêm user
     </button>
   </div>
@@ -33,10 +35,16 @@
           {{ data?.sex }}
         </td>
         <td>
-          <button nz-button (click)="createModal(data.id)">
-            <i nz-icon nzType="delete" nzTheme="fill"></i>Xóa
+          <button
+            nz-button
+            (click)="createModal(data.id)"
+            class="mr-8 mb-8"
+            nzDanger
+          >
+            <i nz-icon nzType="delete" nzTheme="fill"></i>
+            Xóa
           </button>
-          <button nz-button class="ml-8" (click)="navigateToDetail(data)">
+          <button nz-button (click)="navigateToDetail(data)">
             <i nz-icon nzType="edit" nzTheme="outline"></i>Sửa
           </button>
         </td>
