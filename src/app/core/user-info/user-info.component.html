@@ -1,8 +1,9 @@
-<div class="container">
+<div class="container-user">
   <div class="user">
+    <img src="../../../assets/icon/ghim.png" alt="" class="ghim" />
     <div class="user-default">
       <p>
-        <button (click)="handleChangeAvatar()">Change avatar</button>
+        <!-- <button (click)="handleChangeAvatar()">Change avatar</button> -->
         <input
           type="file"
           (change)="onFileSelect($event)"
@@ -10,18 +11,28 @@
           hidden
         />
       </p>
-      <img
-        [src]="
-          imageData
-            ? 'http://192.168.2.161:8000/images/avatar/' + imageData
-            : 'assets/icon/avt.jpg'
-        "
-        alt=""
-      />
+      <p>
+        <img
+          [src]="
+            imageData
+              ? 'http://192.168.2.161:8000/images/avatar/' + imageData
+              : 'assets/icon/avt.jpg'
+          "
+          alt=""
+        />
+        <span
+          nz-icon
+          nzType="cloud-upload"
+          nzTheme="outline"
+          (click)="handleChangeAvatar()"
+          title="Change Avatar"
+          class="avatarChange"
+        ></span>
+      </p>
       <h2>{{ user.username }}</h2>
     </div>
-    <form class="login-form" [formGroup]="userForm" *ngIf="true">
-      <label for="job">Job</label>
+    <form class="login-form" [formGroup]="userForm" *ngIf="isEditMode">
+      <label for="job">Job:</label>
       <input
         type="text"
         id="job"
@@ -38,9 +49,14 @@
       >
         Is required
       </div>
-
-      <label for="dob">Ngày sinh</label>
-      <!-- <input type="date" formControlName="dob" nz-input id="job" /> -->
+      <label for="dob">Ngày sinh:</label>
+      <input
+        type="date"
+        formControlName="dob"
+        nz-input
+        id="job"
+        style="display: none"
+      />
       <nz-date-picker
         nzPlaceHolder="Vui lòng nhập ngày sinh"
         formControlName="dob"
@@ -49,8 +65,17 @@
         nzFormat="yyyy-MM-dd"
         (ngModelChange)="onChange($event)"
       ></nz-date-picker>
+      <div
+        class="red-text"
+        *ngIf="
+          userForm.controls['dob'].hasError('required') &&
+          userForm.controls['dob'].touched
+        "
+      >
+        Is required
+      </div>
 
-      <label for="address">Address</label>
+      <label for="address">Address:</label>
       <input
         type="text"
         id="address"
@@ -67,7 +92,7 @@
       >
         Is required
       </div>
-      <label for="tel">Tel</label>
+      <label for="tel">Tel:</label>
       <input
         type="text"
         id="tel"
@@ -98,12 +123,41 @@
         type="submit"
         class="mt-16"
         (click)="saveUser()"
-        style="width: 47 0px !important"
+        style="width: 470px !important"
         [disabled]="userForm.invalid"
       >
         Submit
       </button>
     </form>
+    <div class="login-form" *ngIf="!isEditMode">
+      <!-- <label for="job">Job</label>
+        <input type="text" disabled [value]="user.job" style="width: 100%" >
+      <label for="dob">Ngày sinh</label>
+      <input type="text" disabled [value]="user.dob" style="width: 100%" >
+      <label for="address">Address</label>
+      <input type="text" disabled [value]="user.address" style="width: 100%" >
+      <label for="tel">Tel</label>
+      <input type="text" disabled [value]="user.tel" style="width: 100%" > -->
+
+      <label for="job">Job:</label>
+      <div>{{ user?.job }}</div>
+      <label for="dob">Ngày sinh:</label>
+      <div>{{ user?.dob }}</div>
+      <label for="address">Address:</label>
+      <div>{{ user?.address }}</div>
+      <label for="tel">Tel:</label>
+      <div>{{ user?.tel }}</div>
+      <button
+        nz-button
+        type="submit"
+        class="mt-16"
+        (click)="toggleEdit()"
+        style="width: 470px !important"
+        [disabled]="isEditMode"
+      >
+        Edit
+      </button>
+    </div>
   </div>
 </div>
 <div class="container" *ngIf="user?.role === 2">

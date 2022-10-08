@@ -125,5 +125,8 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
 
     })
   }
+  toggleEdit() {
+    this.isEditMode = !this.isEditMode;
+  }
 }
 
