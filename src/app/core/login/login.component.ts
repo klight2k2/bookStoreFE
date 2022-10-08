@@ -8,6 +8,7 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { BaseComponent } from 'src/app/core/base/base/base.component';
 import { differenceInCalendarDays } from 'date-fns';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage.service';
+import { format, formatISO } from "date-fns";
 import { CommonService } from 'src/app/services/common.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 @Component({
@@ -38,8 +39,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
   public registerForm=this.fb.group({
     email:new FormControl('',[Validators.required,Validators.email]),
     password:new FormControl('',[Validators.required]),
-    sex:new FormControl('male',[Validators.required]),
-    fullname:new FormControl('',[Validators.required]),
+    role:new FormControl(1,[Validators.required]),
+    level:new FormControl("N5",[Validators.required]),
+    job:new FormControl("",[Validators.required]),
+    username:new FormControl('',[Validators.required]),
     dob:new FormControl('',[Validators.required]),
     tel:new FormControl('',[Validators.required,Validators.pattern(new RegExp("[0-9 ]{10}"))]),
     address:new FormControl('',[Validators.required]),
@@ -60,6 +63,12 @@ export class LoginComponent extends BaseComponent implements OnInit {
     // this.ChangeDetectionStrategy.OnPush(this.isLogin$)
     // this.isLogin$=!this._route.snapshot.queryParamMap.get('isRegister')
   }
+ public onChange(result:Date){
+  console.log(  format(result, 'dd-MMM-yy')  )
+  console.log(  formatISO(result, { representation: 'date' })  )
+  this.registerForm.value.dob= formatISO(result, { representation: 'date' })
+  this.registerForm.setValue({...this.registerForm.value,dob: formatISO(result, { representation: 'date' })})
+}
 
   public toggleLogin(){
    this._router.navigate(['/login'],{queryParams:{isRegister:false}})
@@ -76,7 +85,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this.auth.login(this.loginForm.value),
       (res:any)=>{
         this.common.notifySuccess(res);
-        if(res.code=200){
+        if(res?.success=="true"){
           // console.log(res);
           this.common.setUser(res.user);
 
@@ -95,8 +104,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this.subscribeOnce<any>(
     this.auth.register(this.registerForm.value),
       (res:any)=>{
-        if(res?.code==200) this.notificationService.success(res?.message);
-        this._router.navigate(['/login'])
+        this.common.notifySuccess(res);
       }
     )
   }

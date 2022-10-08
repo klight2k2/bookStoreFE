@@ -34,7 +34,7 @@ export class AddUserComponent extends BaseComponent implements OnInit {
         email:new FormControl('',[Validators.required,Validators.email]),
         password:new FormControl('',[Validators.required]),
         sex:new FormControl('male',[Validators.required]),
-        fullname:new FormControl('',[Validators.required]),
+        username:new FormControl('',[Validators.required]),
         dob:new FormControl('',[Validators.required]),
         phone_number:new FormControl('',[Validators.required,Validators.pattern(new RegExp("[0-9 ]{10}"))]),
         address:new FormControl('',[Validators.required]),

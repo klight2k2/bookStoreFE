@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { CommonService } from 'src/app/services/common.service';
 import { LocalStorageService } from './../localStorage/local-storage.service';
 import { catchError, of, throwError } from 'rxjs';
-const AUTH_API = 'http://localhost:3000/api/auth/';
+const AUTH_API = 'http://192.168.2.161:8000/api/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' ,
   'Access-Control-Allow-Headers': 'Content-Type'}),

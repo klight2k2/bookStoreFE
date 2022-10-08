@@ -89,11 +89,43 @@
     >
       Is required
     </div>
+    <label for="username">Họ và tên</label>
+    <input type="text" id="username" nz-input formControlName="username" />
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['username'].hasError('required') &&
+        registerForm.controls['username'].touched
+      "
+    >
+      Is required
+    </div>
+    <label for="job">Job</label>
+    <input type="text" id="job" nz-input formControlName="job" />
+    <div
+      class="red-text"
+      *ngIf="
+        registerForm.controls['job'].hasError('required') &&
+        registerForm.controls['job'].touched
+      "
+    >
+      Is required
+    </div>
     <label for="role">Role</label>
     <div>
       <nz-radio-group formControlName="role">
-        <label nz-radio nzValue="1">teacher</label>
-        <label nz-radio nzValue="2">student</label>
+        <label nz-radio nzValue="2">teacher</label>
+        <label nz-radio nzValue="3">student</label>
+      </nz-radio-group>
+    </div>
+    <label for="level">Level</label>
+    <div>
+      <nz-radio-group formControlName="level">
+        <label nz-radio nzValue="N1">N1</label>
+        <label nz-radio nzValue="N2">N2</label>
+        <label nz-radio nzValue="N3">N3</label>
+        <label nz-radio nzValue="N4">N4</label>
+        <label nz-radio nzValue="N5">N5</label>
       </nz-radio-group>
     </div>
     <div>
@@ -104,6 +136,8 @@
           formControlName="dob"
           [nzDisabledDate]="disabledDate"
           style="width: 100%"
+          nzFormat="yyyy-mm-dd"
+          (ngModelChange)="onChange($event)"
         ></nz-date-picker>
       </div>
     </div>

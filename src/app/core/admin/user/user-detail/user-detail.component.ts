@@ -33,7 +33,7 @@ console.log(data);
         email:new FormControl(data.email,[Validators.required,Validators.email]),
         password:new FormControl(data.password,[Validators.required]),
         sex:new FormControl(data.sex,[Validators.required]),
-        fullname:new FormControl(data.fullname,[Validators.required]),
+        username:new FormControl(data.username,[Validators.required]),
         dob:new FormControl(data.DOB,[Validators.required]),
         phone_number:new FormControl(data.phone_number,[Validators.required,Validators.pattern(new RegExp("[0-9 ]{10}"))]),
         address:new FormControl(data.address,[Validators.required]),

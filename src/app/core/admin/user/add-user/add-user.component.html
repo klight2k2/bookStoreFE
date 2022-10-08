@@ -52,13 +52,13 @@
       </div>
     </div>
 
-    <label for="fullname">Họ và tên</label>
-    <input type="text" id="fullname" nz-input formControlName="fullname" />
+    <label for="username">Họ và tên</label>
+    <input type="text" id="username" nz-input formControlName="username" />
     <div
       class="red-text"
       *ngIf="
-        userForm.controls['fullname'].hasError('required') &&
-        userForm.controls['fullname'].touched
+        userForm.controls['username'].hasError('required') &&
+        userForm.controls['username'].touched
       "
     >
       Is required
