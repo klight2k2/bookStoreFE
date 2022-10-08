@@ -1,19 +1,4 @@
 import { UserService } from './../../services/user/user.service';
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-user-info',
-//   templateUrl: './user-info.component.html',
-//   styleUrls: ['./user-info.component.scss']
-// })
-// export class UserInfoComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 import { AuthService } from './../../services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -35,6 +20,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 export class UserInfoComponent extends BaseComponent implements OnInit {
   today = new Date();
   imageData: string = '';
+  public role = 2;
   public isEditMode: boolean = false;
   public isEnable: boolean = true;
   public defaultAvatar = "assets/avatar/1.jpg";
@@ -43,6 +29,7 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
     private _router: Router,
     private common: CommonService,
     private userService: UserService,
+    private route: ActivatedRoute,
     private notificationService: NotificationService
   ) { super() }
   public user: any;
@@ -71,9 +58,15 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
 
 
   override async preInit() {
+    const paramId = await this.route.snapshot.paramMap.get("id");
     const checkLogined = this.common.logined$.getValue();
-    await this.subscribeUntilDestroy(this.userService.getUserInfo({ id: 1 }), (data: any) => {
-      this.user = data.user
+    const user = this.common.user$.getValue();
+    let currentId = paramId || user.id;
+    console.log(currentId);
+
+
+    await this.subscribeUntilDestroy(this.userService.getUserInfo({ id: currentId }), (data: any) => {
+      this.user = data.user;
       this.imageData = this.user.avatar;
       console.log(this.formatDate("2022-10-27"));
       this.userForm = this.fb.group({

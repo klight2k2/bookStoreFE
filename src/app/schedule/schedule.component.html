@@ -1,0 +1,90 @@
+<app-header></app-header>
+<div class="container">
+  <div nz-row nzGutter="14" class="mt-16 mb-16">
+    <div nz-col>
+      <button nz-button (click)="showModal()">Add schedule</button>
+    </div>
+  </div>
+  <div class="control-section">
+    <ejs-schedule
+      width="100%"
+      height="650px"
+      [selectedDate]="selectedDate"
+      [eventSettings]="eventSettings"
+      [(currentView)]="currentView"
+      (eventRendered)="onEventRendered($event)"
+    >
+    </ejs-schedule>
+  </div>
+</div>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  (nzOnOk)="handleOk()"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #modalTitle>Thêm lịch rảnh</ng-template>
+
+  <ng-template #modalContent>
+    <div nz-row [nzGutter]="16" nzAlign="middle" [formGroup]="searchForm">
+      <div nz-col nzSpan="12">
+        <label for="date_start">Date start</label>
+        <div>
+          <nz-date-picker
+            nzPlaceHolder="Vui lòng nhập ngày bắt đầu"
+            formControlName="date_start"
+            style="width: 100%"
+          ></nz-date-picker>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <label for="time_start">Time start</label>
+        <div>
+          <nz-select formControlName="time_start" style="width: 100%">
+            <nz-option
+              *ngFor="let item of listTime"
+              [nzLabel]="item"
+              [nzValue]="item"
+            ></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <label for="date_end">Date end</label>
+        <div>
+          <nz-date-picker
+            nzPlaceHolder="Vui lòng nhập ngày kết thúc"
+            formControlName="date_end"
+            style="width: 100%"
+          ></nz-date-picker>
+        </div>
+      </div>
+      <div nz-col nzSpan="12">
+        <label for="time_end">Time end</label>
+        <div>
+          <nz-select formControlName="time_end" style="width: 100%">
+            <nz-option
+              *ngFor="let item of listTime"
+              [nzLabel]="item"
+              [nzValue]="item"
+            ></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-col>
+        <label for="level">Level</label>
+        <div>
+          <nz-radio-group formControlName="level">
+            <label nz-radio nzValue="N1">N1</label>
+            <label nz-radio nzValue="N2">N2</label>
+            <label nz-radio nzValue="N3">N3</label>
+            <label nz-radio nzValue="N4">N4</label>
+            <label nz-radio nzValue="N5">N5</label>
+          </nz-radio-group>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</nz-modal>

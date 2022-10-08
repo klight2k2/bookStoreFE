@@ -1,0 +1,107 @@
+<div class="container">
+  <div nz-row [nzGutter]="16" nzAlign="middle" [formGroup]="searchForm">
+    <div nz-col>
+      <label for="date_start">Date start</label>
+      <div>
+        <nz-date-picker
+          nzPlaceHolder="Vui lòng nhập ngày bắt đầu"
+          formControlName="date_start"
+        ></nz-date-picker>
+      </div>
+    </div>
+    <div nz-col>
+      <label for="time_start">Time start</label>
+      <div>
+        <nz-select formControlName="time_start" tyle="width: 100px">
+          <nz-option
+            *ngFor="let item of listTime"
+            [nzLabel]="item"
+            [nzValue]="item"
+          ></nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-col>
+      <label for="date_end">Date end</label>
+      <div>
+        <nz-date-picker
+          nzPlaceHolder="Vui lòng nhập ngày kết thúc"
+          formControlName="date_end"
+        ></nz-date-picker>
+      </div>
+    </div>
+    <div nz-col>
+      <label for="time_end">Time end</label>
+      <div>
+        <nz-select formControlName="time_end" style="width: 100px">
+          <nz-option
+            *ngFor="let item of listTime"
+            [nzLabel]="item"
+            [nzValue]="item"
+          ></nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-col>
+      <label for="username">username</label>
+      <input type="text" id="username" nz-input formControlName="username" />
+    </div>
+    <div nz-col class="d-flex align-center">
+      <button nz-button (click)="search()">Search</button>
+    </div>
+  </div>
+  <nz-table #basicTable [nzData]="dataSet" class="mt-16 pl-16 pr-16">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>name</th>
+
+        <th>Time begin</th>
+        <th>Time end</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ data.username }}</td>
+        <td>{{ data.time_begin }}</td>
+
+        <td>{{ data.time_end }}</td>
+
+        <td>
+          <button
+            class="mb-16 mr-8"
+            nz-button
+            (click)="navigate('userInfo/' + data.user_id)"
+          >
+            <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+            teacher info
+          </button>
+          <button
+            class="mb-16 mr-8"
+            nz-button
+            (click)="showModal(data.schedule_id)"
+          >
+            <span nz-icon nzType="schedule" nzTheme="outline"></span>
+            Booking
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    [nzTitle]="modalTitle"
+    [nzContent]="modalContent"
+    (nzOnOk)="handleOk()"
+    (nzOnCancel)="handleCancel()"
+  >
+    <ng-template #modalTitle>Thay đổi trạng thái</ng-template>
+
+    <ng-template #modalContent>
+      Bạn có chắc muốn đặt lịch với người này không
+    </ng-template>
+  </nz-modal>
+</div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-const AUTH_API = 'http://192.168.2.202:8000/api/user/';
+const AUTH_API = 'http://192.168.2.161:8000/api/';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -19,11 +19,24 @@ export class UserService {
 
   public getUserInfo(data: any): Observable<any> {
     return this.http.post(
-      AUTH_API + 'info', data,
+      AUTH_API + 'user/info', data,
       httpOptions
     )
 
   }
+  public booking(data: any): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'schedule/book', data,
+      httpOptions
+    )
+  }
+  public addSchedule(data: any): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'schedule/add', data,
+      httpOptions
+    )
+  }
+
   public saveUser(data: any): Observable<any> {
     let formdata = new FormData();
     console.log(data.avatar);
@@ -36,11 +49,18 @@ export class UserService {
 
     console.log(formdata);
     return this.http.put(
-      AUTH_API + 'edit', formdata,
+      AUTH_API + 'user/edit', formdata,
     )
 
   }
 
+  public searchSchedule(data: any): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'schedule/search', data,
+      httpOptions
+    )
+
+  }
   public orders(data: any): Observable<any> {
     return this.http.post(
       AUTH_API + 'orders', data,
@@ -51,6 +71,13 @@ export class UserService {
   public getPurchase(): Observable<any> {
     return this.http.get(
       AUTH_API + 'purchase',
+      httpOptions
+    )
+
+  }
+  public getMySchedule(): Observable<any> {
+    return this.http.get(
+      AUTH_API + 'schedule/me',
       httpOptions
     )
 

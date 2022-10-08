@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-const AUTH_API = 'http://192.168.2.202:8000/api/'
+const AUTH_API = 'http://192.168.2.161:8000/api/'
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export class AdminService {
   }
   public updateStatus(data: any): Observable<any> {
     return this.http.put(
-      'http://192.168.2.202:8000/api/admin/edit', data,
+      'http://192.168.2.161:8000/api/admin/edit', data,
       httpOptions
     );
 

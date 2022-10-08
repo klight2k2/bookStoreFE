@@ -10,14 +10,14 @@ import { NotificationService } from './services/notification/notification.servic
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends BaseComponent implements OnInit {
-  title = 'bookStoreFE';
-  isAdmin=true;
-  loginPage$=this.commonService.loginPage$;
+  title = 'Go go Japan';
+  isAdmin = true;
+  loginPage$ = this.commonService.loginPage$;
   constructor(
-    private commonService:CommonService,
-    private auth:AuthService,
-    private notification:NotificationService
-  ){super()}
+    private commonService: CommonService,
+    private auth: AuthService,
+    private notification: NotificationService
+  ) { super() }
 
   override  preInit(): void {
     this.commonService.setLoading(true)
@@ -26,6 +26,7 @@ export class AppComponent extends BaseComponent implements OnInit {
 
 
   }
+
   override postInit(): void {
     this.commonService.setLoginPage(true)
 

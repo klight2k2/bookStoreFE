@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
 
   declarations: [
+
   ]
 })
 export class CoreModule { }
