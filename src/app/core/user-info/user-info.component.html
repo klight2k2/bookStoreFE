@@ -2,81 +2,84 @@
   <div class="user">
     <div class="user-default">
       <p>
-        <input type="file" (change)="onFileSelect($event)" en />
+        <button (click)="handleChangeAvatar()">Change avatar</button>
+        <input
+          type="file"
+          (change)="onFileSelect($event)"
+          #avatarImage
+          hidden
+        />
       </p>
-      <img src="assets/icon/avt.jpg" alt="" />
+      <img
+        [src]="
+          imageData
+            ? 'http://192.168.2.202:8000/images/avatar/' + imageData
+            : 'assets/icon/avt.jpg'
+        "
+        alt=""
+      />
       <h2>Dao Minh</h2>
     </div>
-    <form class="login-form" [formGroup]="registerForm" *ngIf="true">
-      <label for="password">Mật khẩu</label>
+    <form class="login-form" [formGroup]="userForm" *ngIf="true">
+      <label for="job">Job</label>
       <input
-        [type]="'password'"
-        id="password"
+        type="text"
+        id="job"
         nz-input
-        formControlName="password"
+        formControlName="job"
+        style="width: 100%"
       />
       <div
         class="red-text"
         *ngIf="
-          registerForm.controls['password'].hasError('required') &&
-          registerForm.controls['password'].touched
+          userForm.controls['job'].hasError('required') &&
+          userForm.controls['job'].touched
         "
       >
         Is required
-      </div>
-      <label for="job">Job</label>
-      <input type="text" id="job" nz-input formControlName="job" />
-      <div
-        class="red-text"
-        *ngIf="
-          registerForm.controls['job'].hasError('required') &&
-          registerForm.controls['job'].touched
-        "
-      >
-        Is required
-      </div>
-      <label for="level">Level</label>
-      <div>
-        <nz-radio-group formControlName="level">
-          <label nz-radio nzValue="N1">N1</label>
-          <label nz-radio nzValue="N2">N2</label>
-          <label nz-radio nzValue="N3">N3</label>
-          <label nz-radio nzValue="N4">N4</label>
-          <label nz-radio nzValue="N5">N5</label>
-        </nz-radio-group>
-      </div>
-      <div>
-        <label for="dob">Ngày sinh</label>
-        <div>
-          <nz-date-picker
-            nzPlaceHolder="Vui lòng nhập ngày sinh"
-            formControlName="dob"
-            [nzDisabledDate]="disabledDate"
-            style="width: 100%"
-            nzFormat="yyyy-mm-dd"
-            (ngModelChange)="onChange($event)"
-          ></nz-date-picker>
-        </div>
       </div>
 
+      <label for="dob">Ngày sinh</label>
+      <!-- <input type="date" formControlName="dob" nz-input id="job" /> -->
+      <nz-date-picker
+        nzPlaceHolder="Vui lòng nhập ngày sinh"
+        formControlName="dob"
+        [nzDisabledDate]="disabledDate"
+        style="width: 100%"
+        nzFormat="yyyy-MM-dd"
+        (ngModelChange)="onChange($event)"
+      ></nz-date-picker>
+
       <label for="address">Address</label>
-      <input type="text" id="address" nz-input formControlName="address" />
+      <input
+        type="text"
+        id="address"
+        nz-input
+        formControlName="address"
+        style="width: 100%"
+      />
       <div
         class="red-text"
         *ngIf="
-          registerForm.controls['address'].hasError('required') &&
-          registerForm.controls['address'].touched
+          userForm.controls['address'].hasError('required') &&
+          userForm.controls['address'].touched
         "
       >
         Is required
       </div>
       <label for="tel">Tel</label>
-      <input type="text" id="tel" nz-input formControlName="tel" />
+      <input
+        type="text"
+        id="tel"
+        nz-input
+        formControlName="tel"
+        style="width: 100%"
+      />
       <div
         class="red-text"
         *ngIf="
-          registerForm.controls['tel'].hasError('required') &&
-          registerForm.controls['tel'].touched
+          userForm.controls['tel'].hasError('required') &&
+          userForm.controls['tel'].touched
         "
       >
         Is required
@@ -84,8 +87,8 @@
       <div
         class="red-text"
         *ngIf="
-          registerForm.controls['tel'].hasError('pattern') &&
-          registerForm.controls['tel'].touched
+          userForm.controls['tel'].hasError('pattern') &&
+          userForm.controls['tel'].touched
         "
       >
         Số điện thoại không đúng
@@ -94,9 +97,9 @@
         nz-button
         type="submit"
         class="mt-16"
-        nzBlock
-        (click)="register()"
-        [disabled]="registerForm.invalid"
+        (click)="saveUser()"
+        style="width: 47 0px !important"
+        [disabled]="userForm.invalid"
       >
         Submit
       </button>

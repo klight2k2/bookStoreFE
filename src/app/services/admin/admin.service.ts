@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-const AUTH_API = 'http://192.168.2.161:8000/api/'
+const AUTH_API = 'http://192.168.2.202:8000/api/'
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -14,11 +14,11 @@ const httpOptions = {
 })
 export class AdminService {
   constructor(private http: HttpClient) { }
-  public userDetail$=new BehaviorSubject<any>('');
+  public userDetail$ = new BehaviorSubject<any>('');
 
-  public setUserDetail(data:any){
+  public setUserDetail(data: any) {
     this.userDetail$.next(data);
-}
+  }
 
   public getUsers(): Observable<any> {
     return this.http.get(
@@ -27,16 +27,16 @@ export class AdminService {
     )
 
   }
-  public cancelOrder(order_id:number): Observable<any> {
+  public cancelOrder(order_id: number): Observable<any> {
     return this.http.post(
-      AUTH_API + 'cancelOrder',{order_id:order_id},
+      AUTH_API + 'cancelOrder', { order_id: order_id },
       httpOptions
     );
 
   }
-  public updateStatus(data:any): Observable<any> {
+  public updateStatus(data: any): Observable<any> {
     return this.http.put(
-      'http://192.168.2.161:8000/api/admin/edit',data,
+      'http://192.168.2.202:8000/api/admin/edit', data,
       httpOptions
     );
 
@@ -51,33 +51,33 @@ export class AdminService {
     )
 
   }
-  public updateUser(user:any): Observable<any> {
+  public updateUser(user: any): Observable<any> {
     return this.http.post(
       AUTH_API + 'updateUser',
-      {user},
+      { user },
       httpOptions
     )
 
   }
-  public createUser(user:any): Observable<any> {
+  public createUser(user: any): Observable<any> {
     return this.http.post(
       AUTH_API + 'createUser',
-      {...user},
+      { ...user },
       httpOptions
     )
 
   }
 
-  public deleteUser(user_id:number): Observable<any> {
+  public deleteUser(user_id: number): Observable<any> {
     return this.http.post(
-      AUTH_API + 'deleteUser',{user_id:user_id},
+      AUTH_API + 'deleteUser', { user_id: user_id },
       httpOptions
     )
 
   }
-  public deleteBook(book_id:number): Observable<any> {
+  public deleteBook(book_id: number): Observable<any> {
     return this.http.post(
-      AUTH_API + 'deleteBook',{book_id:book_id},
+      AUTH_API + 'deleteBook', { book_id: book_id },
       httpOptions
     )
 

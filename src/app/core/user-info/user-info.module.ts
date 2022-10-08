@@ -16,7 +16,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     UserInfoRoutingModule,
-    SharedModule
+    SharedModule,
+    NzDatePickerModule
   ]
 })
 export class UserInfoModule { }
