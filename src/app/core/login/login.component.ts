@@ -1,4 +1,3 @@
-import { NotificationService } from './../../services/notification/notification.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -7,9 +6,10 @@ import { Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { BaseComponent } from 'src/app/core/base/base/base.component';
-import { CommonService } from 'src/app/services/common.service';
-import { LocalStorageService } from './../../services/localStorage/local-storage.service';
 import { differenceInCalendarDays } from 'date-fns';
+import { LocalStorageService } from 'src/app/services/localStorage/local-storage.service';
+import { CommonService } from 'src/app/services/common.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -41,7 +41,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     sex:new FormControl('male',[Validators.required]),
     fullname:new FormControl('',[Validators.required]),
     dob:new FormControl('',[Validators.required]),
-    phone_number:new FormControl('',[Validators.required,Validators.pattern(new RegExp("[0-9 ]{10}"))]),
+    tel:new FormControl('',[Validators.required,Validators.pattern(new RegExp("[0-9 ]{10}"))]),
     address:new FormControl('',[Validators.required]),
   })
 

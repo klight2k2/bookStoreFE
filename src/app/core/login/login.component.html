@@ -1,7 +1,12 @@
 <div class="login">
   <form [formGroup]="loginForm" class="login-form" *ngIf="isLogin$ | async">
     <div class="d-flex algin-center justify-center">
-      <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
+      <img
+        src="assets/icon/logo.jpg"
+        class="logo"
+        alt=""
+        (click)="navigate('home')"
+      />
     </div>
     <label for="user">Tài khoản</label>
     <input type="text" id="user" nz-input formControlName="email" />
@@ -45,7 +50,12 @@
     *ngIf="isRegister$ | async"
   >
     <div class="d-flex algin-center justify-center">
-      <img src="assets/icon/logo.webp" alt="" (click)="navigate('home')" />
+      <img
+        src="assets/icon/logo.jpg"
+        class="logo"
+        alt=""
+        (click)="navigate('home')"
+      />
     </div>
     <label for="email">email</label>
 
@@ -79,11 +89,11 @@
     >
       Is required
     </div>
-    <label for="sex">Giới tính</label>
+    <label for="role">Role</label>
     <div>
-      <nz-radio-group formControlName="sex">
-        <label nz-radio nzValue="male">male</label>
-        <label nz-radio nzValue="female">female</label>
+      <nz-radio-group formControlName="role">
+        <label nz-radio nzValue="1">teacher</label>
+        <label nz-radio nzValue="2">student</label>
       </nz-radio-group>
     </div>
     <div>
@@ -98,18 +108,7 @@
       </div>
     </div>
 
-    <label for="fullname">Họ và tên</label>
-    <input type="text" id="fullname" nz-input formControlName="fullname" />
-    <div
-      class="red-text"
-      *ngIf="
-        registerForm.controls['fullname'].hasError('required') &&
-        registerForm.controls['fullname'].touched
-      "
-    >
-      Is required
-    </div>
-    <label for="address">Địa chỉ</label>
+    <label for="address">Address</label>
     <input type="text" id="address" nz-input formControlName="address" />
     <div
       class="red-text"
@@ -120,18 +119,13 @@
     >
       Is required
     </div>
-    <label for="phone_number">Số điện thoại</label>
-    <input
-      type="text"
-      id="phone_number"
-      nz-input
-      formControlName="phone_number"
-    />
+    <label for="tel">tel</label>
+    <input type="text" id="tel" nz-input formControlName="tel" />
     <div
       class="red-text"
       *ngIf="
-        registerForm.controls['phone_number'].hasError('required') &&
-        registerForm.controls['phone_number'].touched
+        registerForm.controls['tel'].hasError('required') &&
+        registerForm.controls['tel'].touched
       "
     >
       Is required
@@ -139,8 +133,8 @@
     <div
       class="red-text"
       *ngIf="
-        registerForm.controls['phone_number'].hasError('pattern') &&
-        registerForm.controls['phone_number'].touched
+        registerForm.controls['tel'].hasError('pattern') &&
+        registerForm.controls['tel'].touched
       "
     >
       Số điện thoại không đúng
