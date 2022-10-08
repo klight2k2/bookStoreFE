@@ -1,37 +1,12 @@
-<div class="container">
-  <div nz-row>
-    <div nz-col [nzSpan]="2" class="d-flex align-center">
-      <img src="assets/icon/call.webp" alt="" />
-    </div>
-    <div nz-col [nzSpan]="4" [nzOffset]="6">
-      <img src="assets/icon/logo.webp" alt="" />
-      <span></span>
-    </div>
-    <div nz-col [nzSpan]="3" [nzOffset]="9" class="shopping-cart">
-      <div class="badge-container">
-        <a
-          routerLink="./shopping-cart"
-          routerLinkActive="active"
-          (click)="navigate('shopping-cart')"
-        >
-          <img src="assets/icon/card.webp" alt="" class="card-logo" />
-        </a>
-        <div class="badge">
-          {{ countCart }}
-        </div>
-      </div>
-      <!-- <div class="shopping-desc">
-        <h2 class="shopping-heading">Shopping-card</h2>
-        <p class="shopping-count">item - 0</p>
-      </div> -->
-    </div>
-  </div>
-</div>
+<div class="container"></div>
 <div class="headerContainer">
   <div class="container full-height">
     <div nz-row nzAlign="middle" class="full-height">
-      <div nz-col [nzSpan]="12" class="mb-8">
-        <ul nz-menu nzMode="horizontal">
+      <div nz-col [nzSpan]="2">
+        <img src="assets/icon/logo2.jpg" alt="" class="logo" />
+      </div>
+      <div nz-col [nzSpan]="18" class="mb-8">
+        <!-- <ul nz-menu nzMode="horizontal">
           <li
             nz-menu-item
             [nzSelected]="navigateList.home"
@@ -40,57 +15,23 @@
             <i nz-icon nzType="home"></i>
             Home
           </li>
-          <li
-            nz-menu-item
-            nz-button
-            nz-dropdown
-            [nzSelected]="navigateList.category"
-            (click)="getAll()"
-            [nzDropdownMenu]="menu"
-            [nzPlacement]="'bottomLeft'"
-          >
-            <i nz-icon nzType="appstore"></i>
-            Category
-            <nz-dropdown-menu #menu="nzDropdownMenu">
-              <ul nz-menu *ngFor="let category of categories">
-                <li nz-menu-item (click)="searchByCategory(category?.id)">
-                  {{ category.name }}
-                </li>
-              </ul>
-            </nz-dropdown-menu>
-          </li>
 
           <li nz-menu-item>FAQs</li>
           <li nz-menu-item>Contact</li>
           <li nz-menu-item>About Us</li>
-        </ul>
+        </ul> -->
       </div>
-      <div nz-col class="gutter-row" [nzSpan]="8">
-        <div class="inner-box">
-          <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-            <input
-              type="text"
-              nz-input
-              placeholder="Nhập tên quyển sách bạn muốn tìm kiếm..."
-              class="full-height"
-              [(ngModel)]="bookTitle"
-            />
-          </nz-input-group>
-        </div>
-      </div>
+
       <div nz-col [nzSpan]="4">
         <div
-          *ngIf="isLogined$ | async; else login"
           class="ml-16 logined"
           nz-popover
           nzType="primary"
           [nzPopoverContent]="loginedInfo"
           nzPopoverPlacement="bottom"
         >
-          <img [src]="randomAvt()" alt="" class="user-avt" />
-          <h2 class="user-name ml-8">
-            {{ user?.name }}
-          </h2>
+          <img src="assets/icon/avt.jpg" alt="" class="user-avt" />
+          <h2 class="user-name ml-8">Đào Minh</h2>
         </div>
       </div>
     </div>
@@ -103,19 +44,10 @@
   </button>
 </ng-template>
 
-<ng-template #login>
-  <div class="login">
-    <p class="login-btn mr-20" (click)="navigate('login', true, true)">
-      Đăng kí
-    </p>
-    <p class="login-btn" (click)="navigate('login', true)">Đăng nhập</p>
-  </div>
-</ng-template>
-
 <ng-template #loginedInfo>
   <ul nz-menu style="background-color: #fff">
     <li nz-menu-item class="login-menu" (click)="navigate('/purchase')">
-      Đơn mua
+      Thay đổi thông tin
     </li>
     <li nz-menu-item class="login-menu" (click)="logOut()">Đăng xuất</li>
   </ul>
