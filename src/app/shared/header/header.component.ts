@@ -32,23 +32,12 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   public categories:any;
 
   override preInit(){
-    this.subscribeUntilDestroy(this.bookService.getCategories(),(categories:any)=>{
-      this.categories  =categories.map((category:any)=>{
-        return {...category,check:false}
-      });
-
-    })
     this.subscribeUntilDestroy(this.commonService.user$,(data:any)=>{
       this.user=data;
     })
   }
   override postInit(){
-    this.shoppingCartService.getCountCart()
-    this.subscribeUntilDestroy<any>(this.shoppingCartService.shoppingCartData,(data:any)=>{
-      this.countCart=data?.length || 0;
-      this.countCart$.next(this.countCart)
 
-    })
 
   }
 

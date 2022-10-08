@@ -15,10 +15,11 @@ const routes: Routes = [
   {path:"shopping-cart",component:MainLayoutComponent ,loadChildren:()=>import("./core/shopping-cart/shopping-cart.module").then((m)=>m.ShoppingCartModule)},
   { path: 'detail', component:MainLayoutComponent ,loadChildren: () => import('./core/cart-detail/cart-detail.module').then(m => m.CartDetailModule) },
   { path: 'login' , loadChildren: () => import('./core/login/login.module').then(m => m.LoginModule) },
-  { path: 'admin',canActivate:[AdminGuard], loadChildren: () => import('./core/admin/admin.module').then(m => m.AdminModule) },
   { path: 'mainLayout', canActivateChild:[AuthGuard],loadChildren: () => import('./shared/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
   { path: 'orders', component:MainLayoutComponent , canActivateChild:[AuthGuard],loadChildren: () => import('./core/orders/orders.module').then(m => m.OrdersModule) },
   { path: 'purchase', component:MainLayoutComponent ,loadChildren: () => import('./core/purchase/purchase.module').then(m => m.PurchaseModule) },
+  { path: 'admin', component:MainLayoutComponent , loadChildren: () => import('./core/admin/admin.module').then(m => m.AdminModule) },
+  { path: 'userInfo', component:MainLayoutComponent , loadChildren: () => import('./core/user-info/user-info.module').then(m => m.UserInfoModule) },
   { path: '**', component:MainLayoutComponent  },
 ];
 

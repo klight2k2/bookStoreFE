@@ -1,22 +1,22 @@
+import { NzTableModule } from 'ng-zorro-antd/table';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { NzLayoutModule} from 'ng-zorro-antd/layout'
-import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
+import { NzModalModule } from 'ng-zorro-antd/modal';
 @NgModule({
   declarations: [
-    AdminComponent,
+    AdminComponent
   ],
   imports: [
-  CommonModule,
-    AdminRoutingModule,
+    NzTableModule,
+    NzModalModule,
     SharedModule,
-    NzLayoutModule,
-    NzAvatarModule,
+    CommonModule,
+    AdminRoutingModule,
   ]
 })
 export class AdminModule { }

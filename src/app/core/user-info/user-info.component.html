@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="user">
+    <div class="user-default">
+      <p>
+        <input type="file" (change)="onFileSelect($event)" en />
+      </p>
+      <img src="assets/icon/avt.jpg" alt="" />
+      <h2>Dao Minh</h2>
+    </div>
+    <form class="login-form" [formGroup]="registerForm" *ngIf="true">
+      <label for="password">Mật khẩu</label>
+      <input
+        [type]="'password'"
+        id="password"
+        nz-input
+        formControlName="password"
+      />
+      <div
+        class="red-text"
+        *ngIf="
+          registerForm.controls['password'].hasError('required') &&
+          registerForm.controls['password'].touched
+        "
+      >
+        Is required
+      </div>
+      <label for="job">Job</label>
+      <input type="text" id="job" nz-input formControlName="job" />
+      <div
+        class="red-text"
+        *ngIf="
+          registerForm.controls['job'].hasError('required') &&
+          registerForm.controls['job'].touched
+        "
+      >
+        Is required
+      </div>
+      <label for="level">Level</label>
+      <div>
+        <nz-radio-group formControlName="level">
+          <label nz-radio nzValue="N1">N1</label>
+          <label nz-radio nzValue="N2">N2</label>
+          <label nz-radio nzValue="N3">N3</label>
+          <label nz-radio nzValue="N4">N4</label>
+          <label nz-radio nzValue="N5">N5</label>
+        </nz-radio-group>
+      </div>
+      <div>
+        <label for="dob">Ngày sinh</label>
+        <div>
+          <nz-date-picker
+            nzPlaceHolder="Vui lòng nhập ngày sinh"
+            formControlName="dob"
+            [nzDisabledDate]="disabledDate"
+            style="width: 100%"
+            nzFormat="yyyy-mm-dd"
+            (ngModelChange)="onChange($event)"
+          ></nz-date-picker>
+        </div>
+      </div>
+
+      <label for="address">Address</label>
+      <input type="text" id="address" nz-input formControlName="address" />
+      <div
+        class="red-text"
+        *ngIf="
+          registerForm.controls['address'].hasError('required') &&
+          registerForm.controls['address'].touched
+        "
+      >
+        Is required
+      </div>
+      <label for="tel">Tel</label>
+      <input type="text" id="tel" nz-input formControlName="tel" />
+      <div
+        class="red-text"
+        *ngIf="
+          registerForm.controls['tel'].hasError('required') &&
+          registerForm.controls['tel'].touched
+        "
+      >
+        Is required
+      </div>
+      <div
+        class="red-text"
+        *ngIf="
+          registerForm.controls['tel'].hasError('pattern') &&
+          registerForm.controls['tel'].touched
+        "
+      >
+        Số điện thoại không đúng
+      </div>
+      <button
+        nz-button
+        type="submit"
+        class="mt-16"
+        nzBlock
+        (click)="register()"
+        [disabled]="registerForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
