@@ -14,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { BaseComponent } from './core/base/base/base.component';
-import { ShoppingCartModule } from './core/shopping-cart/shopping-cart.module';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { ToastAllModule } from '@syncfusion/ej2-angular-notifications';
 
@@ -73,7 +72,6 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-    ShoppingCartModule,
     ScheduleModule,
     ScheduleAllModule,
     RecurrenceEditorAllModule,

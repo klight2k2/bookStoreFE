@@ -29,7 +29,7 @@
           class="avatarChange"
         ></span>
       </p>
-      <h2>{{ user.username }}</h2>
+      <h2>{{ user?.username }}</h2>
     </div>
     <form class="login-form" [formGroup]="userForm" *ngIf="isEditMode">
       <label for="job">Job:</label>
@@ -162,34 +162,39 @@
 </div>
 <div class="container" *ngIf="user?.role === 2">
   <h1>Feedback</h1>
-  <div class="feedback-user">
-    <img src="assets/icon/avt.jpg" alt="" />
-    <div class="feedback-user-infor">
-      <h3>Name</h3>
-      <div>Time</div>
+  <div class="feedback-user" nz-row>
+    <div
+      class="d-flex mb-16"
+      *ngFor="let item of listComment"
+      nz-col
+      [nzSpan]="24"
+    >
+      <img src="assets/icon/avt.jpg" alt="" />
+      <div class="feedback-user-infor ml-16 mr-16 d-flex align-center">
+        <div>{{ item?.student_feedback_fk?.username }}</div>
+      </div>
+      <div class="comment">{{ item?.comment }}</div>
     </div>
-    <form action="">
+    <div class="feedback-user">
+      <img src="assets/icon/avt.jpg" alt="" />
+      <div class="feedback-user-infor ml-16 mr-16 d-flex align-center">
+        <div>{{ currentUser?.username }}</div>
+      </div>
       <input
         type="text"
         class="comment"
+        style="background-color: '#fff'"
+        [(ngModel)]="comment"
         value="Co noi nhanh qua e ko nghe duoc"
       />
-    </form>
-    <button type="submit">Comment</button>
-  </div>
-  <div class="feedback-user">
-    <img src="assets/icon/avt.jpg" alt="" />
-    <div class="feedback-user-infor">
-      <h3>Name</h3>
-      <div>Time</div>
+      <button
+        nz-button
+        class="ml-16"
+        style="background-color: '#fff'"
+        (click)="postComment()"
+      >
+        Comment
+      </button>
     </div>
-    <form action="">
-      <input
-        type="text"
-        class="comment"
-        value="Co noi nhanh qua e ko nghe duoc"
-      />
-    </form>
-    <button type="submit">Comment</button>
   </div>
 </div>

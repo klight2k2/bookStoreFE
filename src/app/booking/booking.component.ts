@@ -63,9 +63,9 @@ export class BookingComponent extends BaseComponent implements OnInit {
       time_begin: date_start + " " + time_start,
       time_end: date_end + " " + time_end, username: username
     }), (res: any) => {
-
+      this.dataSet = res.schedule
     })
-    this.commonService.setLoading(true)
+    this.commonService.setLoading(false)
 
   }
 

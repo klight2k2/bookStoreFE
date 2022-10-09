@@ -33,6 +33,9 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
     private notificationService: NotificationService
   ) { super() }
   public user: any;
+  public currentUser: any;
+  public comment = "";
+  public listComment: any;
   @ViewChild('avatarImage') input!: ElementRef<HTMLInputElement>;;
   public userForm!: FormGroup;
 
@@ -61,14 +64,16 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
     const paramId = await this.route.snapshot.paramMap.get("id");
     const checkLogined = this.common.logined$.getValue();
     const user = this.common.user$.getValue();
+    this.currentUser = user;
     let currentId = paramId || user.id;
     console.log(currentId);
 
 
     await this.subscribeUntilDestroy(this.userService.getUserInfo({ id: currentId }), (data: any) => {
       this.user = data.user;
+      console.log("role", this.user);
+
       this.imageData = this.user.avatar;
-      console.log(this.formatDate("2022-10-27"));
       this.userForm = this.fb.group({
         job: new FormControl(this?.user?.job || "", [Validators.required]),
         dob: new FormControl(this.formatDate(this.user.dob) || "", [Validators.required]),
@@ -77,9 +82,15 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
         image: new FormControl(),
       })
 
-    })
-    console.log("check", checkLogined);
+      if (this.user.role == 2) {
+        this.subscribeOnce(this.userService.getComment({ teacher_id: this.user.id }), (data: any) => {
+          this.listComment = data;
+          console.log(data);
 
+        })
+      }
+
+    })
   }
   public onChange(result: Date) {
     this.userForm.setValue({ ...this.userForm.value, dob: formatISO(result, { representation: 'date' }) })
@@ -90,14 +101,18 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
 
     return datePart[1] + "/" + datePart[2] + "/" + datePart[0];
   }
+  public postComment() {
+    console.log("commment", this.comment);
 
-  public toggleLogin() {
-    this._router.navigate(['/login'], { queryParams: { isRegister: false } })
-  }
-  public toggleRegister() {
-    this._router.navigate(['/login'])
+    if (this.comment) {
+      this.subscribeOnce(this.userService.postComment({ teacher_id: this.user.id, comment: this.comment }), (res: any) => {
+        console.log(res);
+        this.comment = "";
 
+      })
+    }
   }
+
   public navigate(navigateAddress: string) {
     this._router.navigate(['/home'])
   }

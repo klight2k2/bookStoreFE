@@ -13,105 +13,53 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
-  public isLogined$=this.commonService.logined$;
-  public user:any;
-  public bookTitle='';
-  public countCart=0;
-  public countCart$=new BehaviorSubject(0);
-  public navigateList={
-    home:true,
-    category:false
-  };
-  constructor(
-    private _router:Router,
-    private shoppingCartService:ShoppingCartService,
-    private commonService:CommonService,
-    private auth:AuthService,
-    private bookService:BookService
-  ) { super()}
-  public categories:any;
+  public isLogined$ = this.commonService.logined$;
+  public user: any;
 
-  override preInit(){
-    this.subscribeUntilDestroy(this.commonService.user$,(data:any)=>{
-      this.user=data;
+  constructor(
+    private _router: Router,
+    private commonService: CommonService,
+    private auth: AuthService,
+  ) { super() }
+  public categories: any;
+
+  override preInit() {
+    this.subscribeUntilDestroy(this.commonService.user$, (data: any) => {
+      this.user = data;
+      if (!data) {
+        this.navigate('login')
+      }
     })
   }
-  override postInit(){
+  override postInit() {
 
 
   }
 
-  navigateToList(){
-    this._router.navigate(['/list']);
-
-  }
-
-  navigateShoppingCart(){
-    this._router.navigate(['/shopping-cart']);
-  }
-
-  navigateToHome(){
-    this._router.navigate(['/home']);
-
-  }
-  navigate(navigateAdress:string,isLoginPage=false,isRegister=false){
+  navigate(navigateAdress: string, isLoginPage = false, isRegister = false) {
     // console.log(this._router.url);
-    if(navigateAdress=='/home') {
-      this.navigateList.home=true;
-      this.navigateList.category=false;
-    }
-    if(navigateAdress=='/list'){
-      this.navigateList.home=false;
-      this.navigateList.category=true;
-    }
 
-
-    if(isLoginPage) {
+    if (isLoginPage) {
       this.commonService.setLoginPage(false);
     }
-    if(isRegister){
-      this._router.navigate(['/'+navigateAdress],{queryParams:{isRegister:true}});
+    if (isRegister) {
+      this._router.navigate(['/' + navigateAdress], { queryParams: { isRegister: true } });
 
-    }else{
+    } else {
 
-      this._router.navigate(['/'+navigateAdress]);
+      this._router.navigate(['/' + navigateAdress]);
     }
   }
-  logOut(){
+  logOut() {
     this.commonService.setLoading(true)
-  this.auth.signOut();
-    this.navigate('home');
+    this.auth.signOut();
+    this.navigate('login');
     this.commonService.setLoading(false)
   }
 
-  searchByTitle(){
-    this.subscribeUntilDestroy(this.bookService.searchByTitle({bookTitle:this.bookTitle}),(listCart:any)=>{
-      this.commonService.setListCart(listCart)
-      this.navigate('list')
-    })
-  }
 
-  getAll(){
-    this.subscribeOnce(this.bookService.getAll(), (listCart:any)=>{
-      this.navigate('list')
-      this.commonService.setListCart(listCart)
-      // console.log("click");
 
-    })
-  }
-  searchByCategory(categoryId:number){
-    this.subscribeOnce(this.bookService.searchByCategory(categoryId),(data:any)=>{
-      this.commonService.setListCart(data);
-      this.navigate('list')
-    })
-  }
-  randomAvt(){
-    // const randomAvt=Math.floor(Math.random()*6+1);
-    const randomAvt=2;
-    return `assets/avt/${randomAvt}.jpg`
-  }
-
-  }
+}
 
 
 

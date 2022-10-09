@@ -40,6 +40,11 @@ export class ScheduleComponent extends BaseComponent implements OnInit {
   }
 
   override async preInit() {
+    this.commonService.setLoading(true)
+    await this.getSchedule();
+    this.commonService.setLoading(false)
+  }
+  public async getSchedule() {
     await this.subscribeOnce(this.userService.getMySchedule(), (data: any) => {
       console.log(data);
       const dataMap = this.handleMapData(data.schedules);
@@ -62,9 +67,9 @@ export class ScheduleComponent extends BaseComponent implements OnInit {
       from: date_start + " " + time_start,
       to: date_end + " " + time_end, level: level
     }), (res: any) => {
-
+      this.getSchedule();
     })
-    this.commonService.setLoading(true)
+    this.commonService.setLoading(false)
 
   }
 

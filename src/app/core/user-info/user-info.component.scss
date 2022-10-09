@@ -168,14 +168,7 @@
       border-radius: 50%;
     }
 
-    button {
-      background-color: lightblue;
-      border-radius: 10px;
-      outline: none;
-      border: none;
-      cursor: pointer;
-      padding: 10px;
-    }
+
 
     &-info {
       background-color: lightgray;
@@ -198,4 +191,8 @@
   }
 
 
+}
+
+.comment{
+  background-color: #fff;
 }

@@ -24,6 +24,20 @@ export class UserService {
     )
 
   }
+  public getComment(data: any): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'feedback', data,
+      httpOptions
+    )
+
+  }
+  public postComment(data: any): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'feedback/add', data,
+      httpOptions
+    )
+
+  }
   public booking(data: any): Observable<any> {
     return this.http.post(
       AUTH_API + 'schedule/book', data,

@@ -6,20 +6,19 @@
         <img src="assets/icon/logo2.jpg" alt="" class="logo" />
       </div>
       <div nz-col [nzSpan]="18" class="mb-8">
-        <!-- <ul nz-menu nzMode="horizontal">
-          <li
+        <ul nz-menu nzMode="horizontal" *ngIf="user.role === 3">
+          <!-- <li
             nz-menu-item
             [nzSelected]="navigateList.home"
             (click)="navigate('home')"
           >
             <i nz-icon nzType="home"></i>
             Home
-          </li>
+          </li> -->
 
-          <li nz-menu-item>FAQs</li>
-          <li nz-menu-item>Contact</li>
-          <li nz-menu-item>About Us</li>
-        </ul> -->
+          <li nz-menu-item (click)="navigate('schedule')">Schedule</li>
+          <li nz-menu-item (click)="navigate('booking')">Booking</li>
+        </ul>
       </div>
 
       <div nz-col [nzSpan]="4">
@@ -31,24 +30,22 @@
           nzPopoverPlacement="bottom"
         >
           <img src="assets/icon/avt.jpg" alt="" class="user-avt" />
-          <h2 class="user-name ml-8">Đào Minh</h2>
+          <h2 class="user-name ml-8">{{ user?.username }}</h2>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<ng-template #suffixIconButton>
-  <button nzSearch class="full-height search-btn" (click)="searchByTitle()">
-    <i nz-icon nzType="search"></i>
-  </button>
-</ng-template>
-
 <ng-template #loginedInfo>
   <ul nz-menu style="background-color: #fff">
-    <li nz-menu-item class="login-menu" (click)="navigate('/purchase')">
+    <li nz-menu-item class="login-menu" (click)="navigate('/userInfo')">
+      <span nz-icon nzType="edit" nzTheme="outline"></span>
       Thay đổi thông tin
     </li>
-    <li nz-menu-item class="login-menu" (click)="logOut()">Đăng xuất</li>
+    <li nz-menu-item class="login-menu" (click)="logOut()">
+      <span nz-icon nzType="logout" nzTheme="outline" class="mr-16"></span>Đăng
+      xuất
+    </li>
   </ul>
 </ng-template>

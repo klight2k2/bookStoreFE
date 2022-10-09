@@ -1,31 +1,25 @@
+import { AuthLazyGuard } from './shared/auth/auth-lazy.guard';
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './shared/auth/auth.guard'
 import { AdminGuard } from './shared/adminGuard/admin.guard';
 import { ScheduleComponent } from './schedule/schedule.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/home',
-  //   pathMatch: 'full'
-  // },
-  { path: 'home', component: MainLayoutComponent, loadChildren: () => import('./core/home/home.module').then(m => m.HomeModule) },
-  { path: 'list', component: MainLayoutComponent, loadChildren: () => import('./core/list-container/list-container.module').then(m => m.ListContainerModule) },
-  { path: "shopping-cart", component: MainLayoutComponent, loadChildren: () => import("./core/shopping-cart/shopping-cart.module").then((m) => m.ShoppingCartModule) },
-  { path: 'detail', component: MainLayoutComponent, loadChildren: () => import('./core/cart-detail/cart-detail.module').then(m => m.CartDetailModule) },
+  {
+    path: '',
+    redirectTo: '/schedule',
+    pathMatch: 'full'
+  },
   { path: 'login', loadChildren: () => import('./core/login/login.module').then(m => m.LoginModule) },
-  { path: 'mainLayout', canActivateChild: [AuthGuard], loadChildren: () => import('./shared/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
-  { path: 'orders', component: MainLayoutComponent, canActivateChild: [AuthGuard], loadChildren: () => import('./core/orders/orders.module').then(m => m.OrdersModule) },
-  { path: 'purchase', component: MainLayoutComponent, loadChildren: () => import('./core/purchase/purchase.module').then(m => m.PurchaseModule) },
-  { path: 'admin', component: MainLayoutComponent, loadChildren: () => import('./core/admin/admin.module').then(m => m.AdminModule) },
-  { path: 'userInfo', component: MainLayoutComponent, loadChildren: () => import('./core/user-info/user-info.module').then(m => m.UserInfoModule) },
-  { path: 'booking', component: MainLayoutComponent, loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) },
+  { path: 'mainLayout', canLoad: [AuthLazyGuard], loadChildren: () => import('./shared/main-layout/main-layout.module').then(m => m.MainLayoutModule) },
+  { path: 'admin', canLoad: [AuthLazyGuard], component: MainLayoutComponent, loadChildren: () => import('./core/admin/admin.module').then(m => m.AdminModule) },
+  { path: 'userInfo', canLoad: [AuthLazyGuard], component: MainLayoutComponent, loadChildren: () => import('./core/user-info/user-info.module').then(m => m.UserInfoModule) },
+  { path: 'booking', canLoad: [AuthLazyGuard], component: MainLayoutComponent, loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) },
 
-  { path: 'schedule', component: ScheduleComponent },
-  { path: '**', component: MainLayoutComponent },
+  { path: 'schedule', canLoad: [AuthLazyGuard], component: ScheduleComponent },
+  // { path: '**', component: MainLayoutComponent },
 ];
 
 @NgModule({

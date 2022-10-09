@@ -1,18 +1,25 @@
 <div class="container">
-  <div nz-row [nzGutter]="16" nzAlign="middle" [formGroup]="searchForm">
-    <div nz-col>
+  <div
+    class="pr-16 pl-16 pt-16 pb-16"
+    nz-row
+    [nzGutter]="16"
+    nzAlign="middle"
+    [formGroup]="searchForm"
+  >
+    <div nz-col nzSpan="4">
       <label for="date_start">Date start</label>
       <div>
         <nz-date-picker
           nzPlaceHolder="Vui lòng nhập ngày bắt đầu"
           formControlName="date_start"
+          style="width: 100%"
         ></nz-date-picker>
       </div>
     </div>
-    <div nz-col>
+    <div nz-col nzSpan="4">
       <label for="time_start">Time start</label>
       <div>
-        <nz-select formControlName="time_start" tyle="width: 100px">
+        <nz-select formControlName="time_start" style="width: 100%">
           <nz-option
             *ngFor="let item of listTime"
             [nzLabel]="item"
@@ -21,19 +28,20 @@
         </nz-select>
       </div>
     </div>
-    <div nz-col>
+    <div nz-col nzSpan="4">
       <label for="date_end">Date end</label>
       <div>
         <nz-date-picker
           nzPlaceHolder="Vui lòng nhập ngày kết thúc"
           formControlName="date_end"
+          style="width: 100%"
         ></nz-date-picker>
       </div>
     </div>
-    <div nz-col>
+    <div nz-col nzSpan="4">
       <label for="time_end">Time end</label>
       <div>
-        <nz-select formControlName="time_end" style="width: 100px">
+        <nz-select formControlName="time_end" style="width: 100%">
           <nz-option
             *ngFor="let item of listTime"
             [nzLabel]="item"
@@ -47,7 +55,7 @@
       <input type="text" id="username" nz-input formControlName="username" />
     </div>
     <div nz-col class="d-flex align-center">
-      <button nz-button (click)="search()">Search</button>
+      <button nz-button (click)="search()" class="mt-16">Search</button>
     </div>
   </div>
   <nz-table #basicTable [nzData]="dataSet" class="mt-16 pl-16 pr-16">
@@ -65,9 +73,9 @@
       <tr *ngFor="let data of basicTable.data; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ data.username }}</td>
-        <td>{{ data.time_begin }}</td>
+        <td>{{ data.time_begin | date: "medium" }}</td>
 
-        <td>{{ data.time_end }}</td>
+        <td>{{ data.time_end | date: "medium" }}</td>
 
         <td>
           <button
