@@ -13,8 +13,12 @@ https://user-images.githubusercontent.com/81542467/212525882-3d959cc0-6285-4bce-
 ##Demo admin
 
 
+https://user-images.githubusercontent.com/81542467/212525987-1f795a83-9e8c-4879-8ffe-92b10fb820e8.mp4
 
-Uploading BookStoreFE - Google Chrome 2023-01-15 13-07-58.mp4…
+
+
+
+
 
 
 
