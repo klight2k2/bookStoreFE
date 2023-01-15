@@ -5,7 +5,18 @@ b2: open terminal powershell and run  Set-ExecutionPolicy -Scope CurrentUser -Ex
 
 b3: open folder contains code run npm i
 
-## Demo
+## Demo user order
+
+https://user-images.githubusercontent.com/81542467/212525882-3d959cc0-6285-4bce-bf33-12e660f7d988.mp4
+
+
+##Demo admin
+
+
+
+Uploading BookStoreFE - Google Chrome 2023-01-15 13-07-58.mp4…
+
+
 
 ## Development server
 
